@@ -119,6 +119,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     results = []
+    total_views = 0
 
     for url in urls:
 
@@ -137,7 +138,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             else:
                 continue
-
+            if "views" in stats:
+                total_views += int(stats["views"])
             results.append(
                 format_stats(stats)
             )
@@ -163,11 +165,22 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
 
+    if len(results) > 1:
+
+        last_total_reach[user_id] = total_views
+
+        message += (
+        "\n\n━━━━━━━━━━━━━━\n\n"
+        f"📊 <b>Общий охват</b>\n\n"
+        f"👀 <code>{total_views}</code>\n\n"
+        "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+    )
+
     await update.message.reply_text(
         message,
         parse_mode="HTML",
         disable_web_page_preview=True
-    )
+)
 
 
 async def post_init(app):
