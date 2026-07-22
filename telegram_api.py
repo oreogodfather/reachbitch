@@ -8,19 +8,32 @@ load_dotenv()
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 
+from telethon import TelegramClient
+from telethon.sessions import StringSession
+from urllib.parse import urlparse
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
+STRING_SESSION = os.getenv("STRING_SESSION")
+
 client = TelegramClient(
-    "reachbitch",
+    StringSession(STRING_SESSION),
     API_ID,
     API_HASH
 )
 
 
 async def start_telegram_client():
-    """
-    Запускается один раз при старте бота.
-    """
     if not client.is_connected():
-        await client.start()
+        await client.connect()
+
+        if not await client.is_user_authorized():
+            raise Exception("StringSession недействительна")
+
         print("✅ Telethon подключен")
 
 
