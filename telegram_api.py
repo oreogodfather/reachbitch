@@ -1,14 +1,4 @@
 from telethon import TelegramClient
-from urllib.parse import urlparse
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-API_ID = int(os.getenv("API_ID"))
-API_HASH = os.getenv("API_HASH")
-
-from telethon import TelegramClient
 from telethon.sessions import StringSession
 from urllib.parse import urlparse
 from dotenv import load_dotenv
@@ -28,16 +18,20 @@ client = TelegramClient(
 
 
 async def start_telegram_client():
+
     if not client.is_connected():
+
         await client.connect()
 
-        if not await client.is_user_authorized():
-            raise Exception("StringSession недействительна")
+    if not await client.is_user_authorized():
 
-        print("✅ Telethon подключен")
+        raise Exception("StringSession недействительна")
+
+    print("✅ Telethon подключен")
 
 
 def format_number(value):
+
     if value is None:
         return "—"
 
@@ -51,6 +45,9 @@ def format_number(value):
 
 
 async def get_telegram_stats(url: str):
+
+    if not client.is_connected():
+        await client.connect()
 
     parsed = urlparse(url)
 
@@ -72,26 +69,16 @@ async def get_telegram_stats(url: str):
     if message is None:
         raise Exception("Пост не найден")
 
-    # ---------- Название канала ----------
-
     channel_name = entity.title
-
-    # ---------- Просмотры ----------
 
     views = message.views or 0
 
-    # ---------- Репосты ----------
-
     shares = message.forwards or 0
-
-    # ---------- Комментарии ----------
 
     comments = 0
 
     if message.replies:
         comments = message.replies.replies or 0
-
-    # ---------- Реакции ----------
 
     reactions_total = 0
 
@@ -99,19 +86,30 @@ async def get_telegram_stats(url: str):
         for reaction in message.reactions.results:
             reactions_total += reaction.count
 
-    # ---------- ER ----------
-
     er = 0
 
-    if views:
-        er = round(reactions_total / views * 100, 2)
+    if views > 0:
+        er = round(
+            reactions_total / views * 100,
+            2
+        )
 
     return {
+
+        "platform": "Telegram",
+
         "channel": channel_name,
+
         "views": views,
+
         "reactions": format_number(reactions_total),
+
         "shares": format_number(shares),
+
         "comments": format_number(comments),
+
         "er": er,
+
         "url": url
+
     }
