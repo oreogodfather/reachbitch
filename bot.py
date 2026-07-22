@@ -169,9 +169,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if len(results) > 1:
 
-    last_total_reach[user_id] = total_views
+        last_total_reach[user_id] = total_views
 
-    message += (
+        message += (
 
         "\n\n━━━━━━━━━━━━━━\n\n"
 
