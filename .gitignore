@@ -1,0 +1,7 @@
+.venv/
+.env
+reachbitch.session
+reachbitch.session-journal
+__pycache__/
+*.pyc
+.DS_Store
