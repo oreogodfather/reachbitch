@@ -27,10 +27,29 @@ def extract_video_id(url: str):
 
     parsed = urlparse(url)
 
-    if parsed.netloc == "youtu.be":
-        return parsed.path.strip("/")
+    host = parsed.netloc.lower()
+    path = parsed.path.strip("/")
 
-    if "youtube.com" in parsed.netloc:
+    # https://youtu.be/VIDEO_ID
+    if host == "youtu.be":
+        return path.split("/")[0]
+
+    # https://youtube.com/*
+    if "youtube.com" in host:
+
+        # Shorts
+        if path.startswith("shorts/"):
+            return path.split("/")[1]
+
+        # Live
+        if path.startswith("live/"):
+            return path.split("/")[1]
+
+        # Embed
+        if path.startswith("embed/"):
+            return path.split("/")[1]
+
+        # Обычные видео
         query = parse_qs(parsed.query)
 
         if "v" in query:
@@ -54,7 +73,7 @@ async def get_youtube_stats(url: str):
 
     data = response.json()
 
-    if not data["items"]:
+    if not data.get("items"):
         raise Exception("Видео не найдено")
 
     item = data["items"][0]
@@ -68,7 +87,7 @@ async def get_youtube_stats(url: str):
 
     er = 0
 
-    if views > 0:
+    if views:
         er = round(
             (likes + comments) / views * 100,
             2
@@ -82,7 +101,7 @@ async def get_youtube_stats(url: str):
 
         "title": snippet["title"],
 
-        "views": views,
+        "views": format_number(views),
 
         "reactions": format_number(likes),
 
