@@ -26,7 +26,7 @@ from youtube_api import (
 load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
-
+last_total_reach = {}
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -80,9 +80,36 @@ def format_stats(stats: dict):
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
+    user_id = update.effective_user.id
+    text = update.message.text.strip()
     urls = extract_urls(update.message.text)
+    # Пользователь прислал бюджет после подсчета общего охвата
 
+    if user_id in last_total_reach:
+
+        budget = text.replace(" ", "").replace("₽", "").replace("руб", "")
+
+        if budget.isdigit():
+
+            budget = int(budget)
+
+            views = last_total_reach[user_id]
+
+            cpv = budget / views
+
+            await update.message.reply_text(
+
+                f"💰 Бюджет: <b>{budget:,} ₽</b>\n"
+                f"👀 Охват: <b>{views:,}</b>\n"
+                f"📈 CPV: <b>{cpv:.4f} ₽</b>",
+
+                parse_mode="HTML"
+
+            )
+
+            del last_total_reach[user_id]
+
+            return
     if not urls:
 
         await update.message.reply_text(
