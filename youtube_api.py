@@ -10,8 +10,15 @@ API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 
 def format_number(value):
+
     if value is None:
         return "—"
+
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}M"
+
+    if value >= 1_000:
+        return f"{value / 1_000:.1f}K"
 
     return str(value)
 
@@ -20,11 +27,9 @@ def extract_video_id(url: str):
 
     parsed = urlparse(url)
 
-    # https://youtu.be/xxxx
     if parsed.netloc == "youtu.be":
         return parsed.path.strip("/")
 
-    # https://www.youtube.com/watch?v=xxxx
     if "youtube.com" in parsed.netloc:
         query = parse_qs(parsed.query)
 
@@ -77,7 +82,7 @@ async def get_youtube_stats(url: str):
 
         "title": snippet["title"],
 
-        "views": format_number(views),
+        "views": views,
 
         "reactions": format_number(likes),
 
