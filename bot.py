@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 import os
 import re
+import traceback
 
 from telegram_api import (
     get_telegram_stats,
@@ -83,11 +84,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     urls = extract_urls(update.message.text)
 
     if not urls:
-
-        await update.message.reply_text(
-            "Не нашел ни одной ссылки 😔"
-        )
-
+        await update.message.reply_text("Не нашел ни одной ссылки 😔")
         return
 
     results = []
@@ -107,24 +104,25 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             elif platform == "youtube":
                 stats = await get_youtube_stats(url)
 
-            results.append(
-                format_stats(stats)
-            )
+            else:
+                continue
 
-        except Exception as e:
+            results.append(format_stats(stats))
 
-            print(e)
+        except Exception:
+
+            print("\n================ ERROR ================\n")
+            traceback.print_exc()
+            print("\n=======================================\n")
 
             results.append(
                 f"❌ Не удалось получить статистику\n{url}"
             )
 
     if not results:
-
         await update.message.reply_text(
             "Не нашел поддерживаемых ссылок."
         )
-
         return
 
     message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
@@ -132,12 +130,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         message,
         parse_mode="HTML",
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
 
 async def post_init(app):
-
     await start_telegram_client()
 
 
@@ -149,7 +146,6 @@ app = (
 )
 
 app.add_handler(CommandHandler("start", start))
-
 app.add_handler(
     MessageHandler(
         filters.TEXT & ~filters.COMMAND,
