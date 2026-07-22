@@ -84,7 +84,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     urls = extract_urls(update.message.text)
 
     if not urls:
-        await update.message.reply_text("Не нашел ни одной ссылки 😔")
+
+        await update.message.reply_text(
+            "Не нашел ни одной ссылки 😔"
+        )
+
         return
 
     results = []
@@ -107,22 +111,27 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 continue
 
-            results.append(format_stats(stats))
+            results.append(
+                format_stats(stats)
+            )
 
         except Exception:
 
-            print("\n================ ERROR ================\n")
+            print("\n" + "=" * 80)
+            print(f"Ошибка при обработке ссылки:\n{url}\n")
             traceback.print_exc()
-            print("\n=======================================\n")
+            print("=" * 80 + "\n")
 
             results.append(
                 f"❌ Не удалось получить статистику\n{url}"
             )
 
     if not results:
+
         await update.message.reply_text(
             "Не нашел поддерживаемых ссылок."
         )
+
         return
 
     message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
@@ -130,12 +139,19 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         message,
         parse_mode="HTML",
-        disable_web_page_preview=True,
+        disable_web_page_preview=True
     )
 
 
 async def post_init(app):
-    await start_telegram_client()
+
+    try:
+        await start_telegram_client()
+    except Exception:
+        print("\n" + "=" * 80)
+        print("Ошибка запуска Telethon:\n")
+        traceback.print_exc()
+        print("=" * 80 + "\n")
 
 
 app = (
@@ -146,6 +162,7 @@ app = (
 )
 
 app.add_handler(CommandHandler("start", start))
+
 app.add_handler(
     MessageHandler(
         filters.TEXT & ~filters.COMMAND,
@@ -155,4 +172,4 @@ app.add_handler(
 
 print("🚀 REACHBITCH запущен")
 
-app.run_polling()
+app.run_polling(drop_pending_updates=True)
