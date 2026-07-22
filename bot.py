@@ -120,6 +120,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     results = []
     total_views = 0
+    views_for_copy = []
 
     for url in urls:
 
@@ -140,6 +141,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 continue
             if "views" in stats:
                 total_views += int(stats["views"])
+                views_for_copy.append(str(stats["views"]))
             results.append(
                 format_stats(stats)
             )
@@ -167,13 +169,28 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if len(results) > 1:
 
-        last_total_reach[user_id] = total_views
+    last_total_reach[user_id] = total_views
 
-        message += (
+    message += (
+
         "\n\n━━━━━━━━━━━━━━\n\n"
+
         f"📊 <b>Общий охват</b>\n\n"
+
         f"👀 <code>{total_views}</code>\n\n"
+
         "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+
+        "\n\n━━━━━━━━━━━━━━\n\n"
+
+        "📋 <b>Для таблицы</b>\n\n"
+
+        "<pre>"
+
+        + "\n".join(views_for_copy)
+
+        + "</pre>"
+
     )
 
     await update.message.reply_text(
