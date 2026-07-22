@@ -156,6 +156,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             results.append(
                 f"❌ Не удалось получить статистику\n{url}"
             )
+            views_for_copy.append("N/A")
 
     if not results:
 
@@ -172,26 +173,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         last_total_reach[user_id] = total_views
 
         message += (
-
         "\n\n━━━━━━━━━━━━━━\n\n"
-
         f"📊 <b>Общий охват</b>\n\n"
-
         f"👀 <code>{total_views}</code>\n\n"
 
-        "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
-
-        "\n\n━━━━━━━━━━━━━━\n\n"
-
-        "📋 <b>Для таблицы</b>\n\n"
-
+        "📋 <b>Охваты для таблицы</b>\n\n"
         "<pre>"
-
         + "\n".join(views_for_copy)
+        + "</pre>\n\n"
 
-        + "</pre>"
-
-    )
+        "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+        )
 
     await update.message.reply_text(
         message,
