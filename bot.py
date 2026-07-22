@@ -8,12 +8,18 @@ from telegram.ext import (
 )
 
 from dotenv import load_dotenv
+from urllib.parse import urlparse
+
 import os
 import re
 
 from telegram_api import (
     get_telegram_stats,
     start_telegram_client,
+)
+
+from youtube_api import (
+    get_youtube_stats,
 )
 
 load_dotenv()
@@ -24,28 +30,52 @@ TOKEN = os.getenv("BOT_TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Привет!\n\n"
-        "Пришли одну или несколько ссылок на посты Telegram."
+        "Пришли одну или несколько ссылок на Telegram или YouTube."
     )
 
 
 def extract_urls(text: str):
-    """
-    Возвращает все ссылки из сообщения.
-    """
-
     return re.findall(r"https?://[^\s]+", text)
+
+
+def detect_platform(url: str):
+
+    host = urlparse(url).netloc.lower()
+
+    if host == "t.me":
+        return "telegram"
+
+    if "youtube.com" in host or "youtu.be" in host:
+        return "youtube"
+
+    return None
 
 
 def format_stats(stats: dict):
 
-    return (
-        f"🔵 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n\n"
-        f"👀 <code>{stats['views']}</code>\n"
-        f"❤️ <b>{stats['reactions']}</b>\n"
-        f"🔁 <b>{stats['shares']}</b>\n"
-        f"💬 <b>{stats['comments']}</b>\n"
-        f"📈 <b>{stats['er']}%</b>"
-    )
+    if stats["platform"] == "Telegram":
+
+        return (
+            f"🔵 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n\n"
+            f"👀 <code>{stats['views']}</code>\n"
+            f"❤️ <b>{stats['reactions']}</b>\n"
+            f"🔁 <b>{stats['shares']}</b>\n"
+            f"💬 <b>{stats['comments']}</b>\n"
+            f"📈 <b>{stats['er']}%</b>"
+        )
+
+    if stats["platform"] == "YouTube":
+
+        return (
+            f"🔴 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
+            f"<i>{stats['title']}</i>\n\n"
+            f"👀 <code>{stats['views']}</code>\n"
+            f"👍 <b>{stats['reactions']}</b>\n"
+            f"💬 <b>{stats['comments']}</b>\n"
+            f"📈 <b>{stats['er']}%</b>"
+        )
+
+    return "Неизвестная платформа"
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -64,12 +94,18 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     for url in urls:
 
-        if "t.me/" not in url:
+        platform = detect_platform(url)
+
+        if platform is None:
             continue
 
         try:
 
-            stats = await get_telegram_stats(url)
+            if platform == "telegram":
+                stats = await get_telegram_stats(url)
+
+            elif platform == "youtube":
+                stats = await get_youtube_stats(url)
 
             results.append(
                 format_stats(stats)
@@ -113,6 +149,7 @@ app = (
 )
 
 app.add_handler(CommandHandler("start", start))
+
 app.add_handler(
     MessageHandler(
         filters.TEXT & ~filters.COMMAND,
