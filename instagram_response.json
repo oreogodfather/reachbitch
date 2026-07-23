@@ -1,0 +1,1240 @@
+{
+  "data": {
+    "xdt_api__v1__clips__user__connection_v2": {
+      "edges": [
+        {
+          "node": {
+            "media": {
+              "pk": "3703959529319885542",
+              "id": "3703959529319885542_67321317932",
+              "code": "DNnG5FHiOrm",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 14815,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 11,
+              "like_count": 234,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [
+                "67321317932"
+              ],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1920,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDjHuIPBKcWBgbHyL9EtK1N_kMtDpnTduWHwqAI6pAPWQ&oe=6A67AB27",
+                    "width": 1080
+                  },
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e35_p720x720_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAiI8VF_zdJ4F8Y76r6Ma1py9diiLOUwdcLd3F3qsZXqg&oe=6A67AB27",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCmjIiRcJhLyFyNuo5NTHZQsn-p499al9hUtza-adQTIA&oe=6A67AB27",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQASglBltIw6Ig3CZdaBMnvXbYL3_bGVIOvnMQGj0l3QfQ&oe=6A67AB27",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAUjVtn5tJ16Bt1PyY-iqLqz_CqIooWEaPe_HKOsG51lg&oe=6A67AB27",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDls882O8TLnGI04IvwYf7NCsoHPtPIfpFSJlfTtCIrhA&oe=6A67AB27",
+                    "width": 240
+                  },
+                  {
+                    "height": 1080,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s1080x1080_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBI1JQr0SXO0Jn86LEFI1UW6moLriohISqfJjH9TRmRMQ&oe=6A67AB27",
+                    "width": 1080
+                  },
+                  {
+                    "height": 750,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s750x750_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBVd3to2Yxup47F1SOsFlO9Mn4P4NxfJXPy3diDn6nS8A&oe=6A67AB27",
+                    "width": 750
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s640x640_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCbezQTGXaPLHd1ikYQUiuJaOvKn-th8n7tdCsaTCPMwQ&oe=6A67AB27",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s480x480_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQD6NXUQvPOCyuunkyc51ZggjJs7k4JM35toiV8UQrC0pg&oe=6A67AB27",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s320x320_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB3C0WrMQonw2CBmgp8pkMzMaIHNF79kuBi2brAGqSpFg&oe=6A67AB27",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s240x240_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB7TBdoeUrsRTDVjBwNMQT9ZgO9wz91F33SjilVJ2jahQ&oe=6A67AB27",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/537007323_17902447425245933_1421861669762538608_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s150x150_tt6&_nc_cat=111&ig_cache_key=MzcwMzk1OTUyOTMxOTg4NTU0MjE3OTAyNDQ3NDE5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=p-fMIf0kE0sQ7kNvwFU8Nld&_nc_oc=AdqzvvbNHo6digcw83EehRm2vml8RABFciuTL0Bp2RVwX12wZvsL_P75E02Lj9kKqKeyHUyiJV81NkvE1uf-HiIL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCiRi27zY2MQiq-CslW5Krf7PozyCT7lkPlnad89JhNWQ&oe=6A67AB27",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3946049342161933384",
+              "id": "3946049342161933384_67321317932",
+              "code": "DbDLvg5udRI",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 2224,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 1,
+              "like_count": 49,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDnaS4kr0dP5MxNch0OTWUey8RDA6U06ybLqR6WaVP7Zg&oe=6A67C4DA",
+                    "width": 640
+                  },
+                  {
+                    "height": 270,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=dst-jpg_e15_s480x480_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBgjZ3uayHrHa6ihyYDKNZ7U9qOJg4mu1womXFDNJcDeA&oe=6A67C4DA",
+                    "width": 480
+                  },
+                  {
+                    "height": 180,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=dst-jpg_e15_s320x320_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAzs0g7sOBfVKYnB6BKdz4D4w_NZ-Grd3wgbDf8QgRi3Q&oe=6A67C4DA",
+                    "width": 320
+                  },
+                  {
+                    "height": 135,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=dst-jpg_e15_s240x240_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCCcyCAf7LhJOrSouONIYD548DwvIjk4hSsd0Cj4eUCFw&oe=6A67C4DA",
+                    "width": 240
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAU6V3Z-AVWQrQ7YZwTozfUCYcC5CnMx25Hp2QNS-17fw&oe=6A67C4DA",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAU6V3Z-AVWQrQ7YZwTozfUCYcC5CnMx25Hp2QNS-17fw&oe=6A67C4DA",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAU6V3Z-AVWQrQ7YZwTozfUCYcC5CnMx25Hp2QNS-17fw&oe=6A67C4DA",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAU6V3Z-AVWQrQ7YZwTozfUCYcC5CnMx25Hp2QNS-17fw&oe=6A67C4DA",
+                    "width": 360
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s320x320_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDCb4WFg3ZYV2f9Ir0tguX-7EXO0Qp0svHmpgPY0vCO1g&oe=6A67C4DA",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s240x240_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQArPXYhJEiq8yE1UZopBjaxxdTMit0En3GIaWjAfMa8qQ&oe=6A67C4DA",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/752923746_1630634158630247_859809220721649156_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s150x150_tt6&_nc_cat=102&ig_cache_key=Mzk0NjA0OTM0MjE2MTkzMzM4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=NePLyMf1uNAQ7kNvwEUn7OB&_nc_oc=AdqQ4ZuU0KvkK8IwOlubXR_tkRWAEYMcZen-DAE5hCEQKaWivE4Bc4M59TIqHycHPknAHi-b9SiStWoYiJJzeUNW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCeZZ89J2VOYwGsfe4a1XvLC9QcRDPxvPMeOnbdNBo3AQ&oe=6A67C4DA",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1080,
+              "original_width": 1916,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3945544545855671275",
+              "id": "3945544545855671275_67321317932",
+              "code": "DbBY9wtNQvr",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 4696,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 3,
+              "like_count": 106,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAkG7uTizqFlXDSrOboAdUVUj184EuwM-2FMNzAJeQgVw&oe=6A67B9E4",
+                    "width": 640
+                  },
+                  {
+                    "height": 270,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=dst-jpg_e15_s480x480_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQALlTAFJNgkgTNCmL152FtoghebKhHWZ8igxl879wW2DQ&oe=6A67B9E4",
+                    "width": 480
+                  },
+                  {
+                    "height": 180,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=dst-jpg_e15_s320x320_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBIFFtKITZmRP3_DcNj5Rm8XW4Taj4iZVK8XgFK2li75g&oe=6A67B9E4",
+                    "width": 320
+                  },
+                  {
+                    "height": 135,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=dst-jpg_e15_s240x240_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDT76p_Y_jU6dVyeJnOi-lQeL-l0yvLocDfPAmn7URHHQ&oe=6A67B9E4",
+                    "width": 240
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwQ8zkM936dLkF0gwAU2iz9l8fO3a_Ix5z4_P_N175lg&oe=6A67B9E4",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwQ8zkM936dLkF0gwAU2iz9l8fO3a_Ix5z4_P_N175lg&oe=6A67B9E4",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwQ8zkM936dLkF0gwAU2iz9l8fO3a_Ix5z4_P_N175lg&oe=6A67B9E4",
+                    "width": 360
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s360x360_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwQ8zkM936dLkF0gwAU2iz9l8fO3a_Ix5z4_P_N175lg&oe=6A67B9E4",
+                    "width": 360
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s320x320_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAgus84jHmoXAMkZPaCWA37KyOz_ZAZUcf-hUvDTnDYHw&oe=6A67B9E4",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s240x240_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBmxNq6unocVxWMgBWekfaqiLhpjjrhXtiXNAFUiwk3_A&oe=6A67B9E4",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/753224940_2399227270487697_749419225752021937_n.jpg?stp=c140.0.360.360a_dst-jpg_e15_s150x150_tt6&_nc_cat=105&ig_cache_key=Mzk0NTU0NDU0NTg1NTY3MTI3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fbmZyYW1lX2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=cSQ2C9GLwj0Q7kNvwHGsaTG&_nc_oc=AdrqCXPATUUqt7Ymd__VGgvHV5unOXWy2PyXIg98-z3rWsZU6Vx4hhRUtBXk6eiXz0Q6547z-sqiTybEm40uq8Ga&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBWN15vyoCaEBOxs1NceuaTPp4Y_OP-M7KbqkZEWyrHSg&oe=6A67B9E4",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1080,
+              "original_width": 1916,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3942616715278820780",
+              "id": "3942616715278820780_67321317932",
+              "code": "Da2_QN_tiWs",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 4187,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 3,
+              "like_count": 92,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBzF469UDm9ubParSINrFf2BqXp1hydweROMgpXGDN1xg&oe=6A67BB38",
+                    "width": 640
+                  },
+                  {
+                    "height": 360,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=dst-jpg_e15_s480x480_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB0EYAjq-CmeUvRrX8RGDuUNgEvdT-Li3NIel_O1RX5-g&oe=6A67BB38",
+                    "width": 480
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=dst-jpg_e15_s320x320_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDRUSdOKRlFVJ99xxYFBhWN7QZP7j7JKANDob37CkxHNQ&oe=6A67BB38",
+                    "width": 320
+                  },
+                  {
+                    "height": 180,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=dst-jpg_e15_s240x240_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQADw9AB5uHEwrUPk50_j09rMUaHPGLRBs5zFWxZ9EDAAA&oe=6A67BB38",
+                    "width": 240
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s480x480_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBcZJ4E1EKxRSvTqyLauLHNUlfXOX-gMkZ8nW3lnoygfg&oe=6A67BB38",
+                    "width": 480
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s480x480_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBcZJ4E1EKxRSvTqyLauLHNUlfXOX-gMkZ8nW3lnoygfg&oe=6A67BB38",
+                    "width": 480
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s480x480_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBcZJ4E1EKxRSvTqyLauLHNUlfXOX-gMkZ8nW3lnoygfg&oe=6A67BB38",
+                    "width": 480
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s480x480_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBcZJ4E1EKxRSvTqyLauLHNUlfXOX-gMkZ8nW3lnoygfg&oe=6A67BB38",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s320x320_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC2wRwzWobeQbdJBopYUkL6Ri_dFhgzQjH29yHAvus2nQ&oe=6A67BB38",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s240x240_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAaDI5B6KfETRm8H4AS9TSVJVJi1t_heHymCkp61nFCjA&oe=6A67BB38",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/748343456_1600256451461230_217730443391759976_n.jpg?stp=c80.0.480.480a_dst-jpg_e15_s150x150_tt6&_nc_cat=108&ig_cache_key=Mzk0MjYxNjcxNTI3ODgyMDc4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=qiJvu_CrEDYQ7kNvwHXwzzJ&_nc_oc=Adr16L13QNAaXYcBdYpyddIaSN4izIGbXUssjCyW1Y1j_hSgl9e4_zhEODJrZmHky2gu-tzHaiOvqAkuPhUdHtPw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCc98PEHpabw4xSNxO7yNLb0gYGhLvY53SuxF0xv0g_Pg&oe=6A67BB38",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1080,
+              "original_width": 1440,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3940445672686613187",
+              "id": "3940445672686613187_67321317932",
+              "code": "DavRnZBNfLD",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 6282,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 2,
+              "like_count": 142,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1136,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCWreYuST1EDsWvOH239tNn79X2EAyJ_t-Q6akW0aKLlg&oe=6A67C482",
+                    "width": 640
+                  },
+                  {
+                    "height": 852,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCpBASCDGI1LDLHSiAy08AD4W7jZM9plgv3Eh14V1HEcQ&oe=6A67C482",
+                    "width": 480
+                  },
+                  {
+                    "height": 568,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQA8bNBkIXxglXQzPV2AWWdQ7VqxqF_wIm91_iB96pjfJw&oe=6A67C482",
+                    "width": 320
+                  },
+                  {
+                    "height": 426,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDTyIyA4vPf_4UtL7iP7SvAMw93vdyE7h461DmFKH3K0A&oe=6A67C482",
+                    "width": 240
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCYgZ6Hcks7O4YZwqC0J4vEh1oVVpOB_zV_DX8FmKfIrg&oe=6A67C482",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCYgZ6Hcks7O4YZwqC0J4vEh1oVVpOB_zV_DX8FmKfIrg&oe=6A67C482",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCYgZ6Hcks7O4YZwqC0J4vEh1oVVpOB_zV_DX8FmKfIrg&oe=6A67C482",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s480x480_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAGnSTVaBFwTyK5_CCceJfvzivA74EJFKIhUqujhtPXWg&oe=6A67C482",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s320x320_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCqrVqP4OsI5rEG_1Fb_ttVsMkTcpYa0r2qgAFAAaKncA&oe=6A67C482",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s240x240_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBRWm9No_MNXkQcPhKB_BMoxitaL2n7EuEZS-CaIAXsSw&oe=6A67C482",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/747112497_2711264789274149_3328125464545173057_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s150x150_tt6&_nc_cat=111&ig_cache_key=Mzk0MDQ0NTY3MjY4NjYxMzE4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fWQ8elnlSN8Q7kNvwEGD-8T&_nc_oc=AdpXnZpotRe823d6yE8yNHCo8GZ-elK0Utqo-1kn4-8MxXDam_eSLYn_QMJURRRT37k0xdPz8cyVXldHCfRqEjIy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQASPh1CTNJo9CDfjiYsm4_gnywKbn8mKYD4pXY6kcCd1A&oe=6A67C482",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3938853638888934171",
+              "id": "3938853638888934171_67321317932",
+              "code": "DapnoQAOssb",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 4750,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 1,
+              "like_count": 35,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1136,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAaySPcKADi8nmCWfgfsqK48KnEhg2U6Ziap08oq3I8fg&oe=6A67A96A",
+                    "width": 640
+                  },
+                  {
+                    "height": 852,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC-qyy6hVLw9LVrhoRk8NVs5jvi5Y-viXF-Wyy_8ApJiw&oe=6A67A96A",
+                    "width": 480
+                  },
+                  {
+                    "height": 568,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwvzazqvt3mP9K_bEii7Q9PA56_Gg4--3sRfHFMRQHVA&oe=6A67A96A",
+                    "width": 320
+                  },
+                  {
+                    "height": 426,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCjZSi4wxh4WllwzVB6DAE7stIi8ibWL182_LDrOVjAsg&oe=6A67A96A",
+                    "width": 240
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAPOMPJkRRpjyxUVi48dZQ4--RWE58vZdbZj1riPbjFVA&oe=6A67A96A",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAPOMPJkRRpjyxUVi48dZQ4--RWE58vZdbZj1riPbjFVA&oe=6A67A96A",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAPOMPJkRRpjyxUVi48dZQ4--RWE58vZdbZj1riPbjFVA&oe=6A67A96A",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s480x480_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDim65q-jd1xwBNuElv_AcKexe7ie13X0EM08lG3yH9eA&oe=6A67A96A",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s320x320_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC7sKC2IFHqrZVJ0BwGS1NgGzwBsRarEd0FvNNNLZSSBg&oe=6A67A96A",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s240x240_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDpO_SnhS6jzOMwsYdMnIvZQ9kikuUM5T1KqwgazC8V1g&oe=6A67A96A",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/743940323_1626394465742864_2472162843533061696_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s150x150_tt6&_nc_cat=103&ig_cache_key=MzkzODg1MzYzODg4ODkzNDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=7xw2ZGTTzmAQ7kNvwGMBoFV&_nc_oc=Adrzlq84lbPdjgMQkR1BWjWOp1wIpKxkzYUe2_bf_Ev-uu8TVlsmeRMsKPRkGZCqvfVtElIJVLAOMmvOohk51dQx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCEZdrZIsmMBR8KDZwDIZobLLUEuYOgwOTtfHDjo-KoWQ&oe=6A67A96A",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3938290084846468442",
+              "id": "3938290084846468442_67321317932",
+              "code": "DannfdZt31a",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 5665,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 1,
+              "like_count": 109,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 2096,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCroZkJE4TXSP4385TaXPHlFrkbWVPdjKlBv1bZ01XEOQ&oe=6A67AD3F",
+                    "width": 1179
+                  },
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e35_p720x720_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBf6d9VOOwrKxFLc1-1jJxRC-Mbep4tQ4oysFg32kMjcg&oe=6A67AD3F",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCwy3dL_x-pV7xs89xnLs_xDr2S5m3-vct4W7KI8Ve1yA&oe=6A67AD3F",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDcgRJHpxvKcH3nubTigw3YV2BY5ebll2qKE-On4Nc3rg&oe=6A67AD3F",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAMGgqLbINhQ0WBWTjy65LkgbzvGyINErsIvhD9hamIoA&oe=6A67AD3F",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBTtVsRKl0vOeJxbmMxQvw_9tjkOJd-V5c4cujIckUWig&oe=6A67AD3F",
+                    "width": 240
+                  },
+                  {
+                    "height": 1080,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAJoXClskh58Jtf-4J_BdAEBaL2mzFQnjxbS9XRI9bfVQ&oe=6A67AD3F",
+                    "width": 1080
+                  },
+                  {
+                    "height": 750,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e35_s750x750_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCxKTsb8w09kK9vQ8OibtizBfKL2IViVyLtp31Hv1VQ8g&oe=6A67AD3F",
+                    "width": 750
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e35_s640x640_sh2.08_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBkocQm09vQTwNHSjX1FMzGO7SScxt2BoPXndiWpceasQ&oe=6A67AD3F",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e15_s480x480_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBK9wRJ06PK57sD32lQSk0muxBZiiKN2qVVUbYCPjk5Vg&oe=6A67AD3F",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e15_s320x320_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAjXFWMngzAPNXS5YylKVpCE6vdvlph_62UiI5N5Ll66g&oe=6A67AD3F",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e15_s240x240_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAARPEsufIqAtQNEMcjJP2DEUcwGK-8kzBYqZrsjsPxNQ&oe=6A67AD3F",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/743975535_17944329141245933_2707448183026389469_n.jpg?stp=c0.458.1179.1179a_dst-jpg_e15_s150x150_tt6&_nc_cat=111&ig_cache_key=MzkzODI5MDA4NDg0NjQ2ODQ0MjE3OTQ0MzI5MTM1MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzkuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=wtc3SywWcMkQ7kNvwGHPh8v&_nc_oc=Adqs4y1fGWtjv6JkQVJDEsHVkH2TWbowASKHDsRwAC7SGaEX7axynZPO7Q2dBOTayMcg2-sEREwcxxahkOlA8AW8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCDAh81x9ZXKCYqOmmHvhHLF-aLBQM0wmyUfBhyA_69Xw&oe=6A67AD3F",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1078,
+              "original_width": 1916,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3938201491195929358",
+              "id": "3938201491195929358_29586504",
+              "code": "DanTWQIpaMO",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "29586504",
+                "id": "29586504",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 15462,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 5,
+              "like_count": 117,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDMVwuOOaVHpqH7bOBh1noYKpX2RTRG0T9CqzZQZ-WCpQ&oe=6A679F5D",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCAzG9kS8JuLbvpHUvRUupgmWdVBFE7SR3l2ts0zfhQ2w&oe=6A679F5D",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAlHjKLaCsrDSi9cUhBIOM_yeGGO1GUD4qdQmjkzL3SsQ&oe=6A679F5D",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB4RyqaUF7nEtCkjGRi8cnV84faoOT22bgCLImHCD5Zxw&oe=6A679F5D",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDidH0IoR8LEb-TkBKieYXBuOXKQmrCU_oE2P35Xtvnbg&oe=6A679F5D",
+                    "width": 240
+                  },
+                  {
+                    "height": 720,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s720x720_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwkq67FD7DCRLjB5CEZzOIAy-x6eKFmHavZvPHz1DaPw&oe=6A679F5D",
+                    "width": 720
+                  },
+                  {
+                    "height": 720,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s720x720_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDwkq67FD7DCRLjB5CEZzOIAy-x6eKFmHavZvPHz1DaPw&oe=6A679F5D",
+                    "width": 720
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s640x640_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC8Y8jlOKDUyF-Z7z6GZ95IkmiLtOy-OUCSHBjClIQn1g&oe=6A679F5D",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s480x480_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB1VhtmpCmltT8A_CilQ_9xgWUv3aiC6o4lB3SnT5y2fQ&oe=6A679F5D",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s320x320_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQByDNsmqeQPghluQziapnTUCjOry1wEFvntlMr7LEgsHQ&oe=6A679F5D",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s240x240_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC2GOpMOmhg-d3FiTcamUULF4L3N8yKMugTZmM_bKwrZg&oe=6A679F5D",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/730369171_18617588212018505_5244604980216800237_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s150x150_tt6&_nc_cat=101&ig_cache_key=MzkzODIwMTQ5MTE5NTkyOTM1ODE4NjE3NTg4MjA2MDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=chjMWgIGca8Q7kNvwGM_KQa&_nc_oc=AdpEfffz34i8AsF21SwQrYzP5l45reIPee3VPQLa7rQWrjauqBruX-EDpyRCqXT6rXumsEbTWdjCzPH_xQGQIDGq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDKEsDrXSjjH7PZTGK9OsGKjBtWr_UukW5gjRFRnrquqQ&oe=6A679F5D",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": [
+                {
+                  "aigm_account_label_info": null,
+                  "id": "67321317932"
+                }
+              ]
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3936717419589425756",
+              "id": "3936717419589425756_67321317932",
+              "code": "DaiB6KvuFpc",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 2588,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 2,
+              "like_count": 43,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQB0duRIheqVOFXXrEc2aBtmvgq-MBZIm5mOCBwexEW1Iw&oe=6A67B213",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQARK8T8g7du4hp-0fh61Mur_kN_n1P21JRneTiTGhyDlQ&oe=6A67B213",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDL8OihELfCdF3TkJeG7TCJ2tqHm9iNeRI0sYjmLpM1uA&oe=6A67B213",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBGIR8tnRTP6Fgj8kdgQgFZSMbhwrymy0jimRGHet7atQ&oe=6A67B213",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAToeQYNb1Po3B8iGADfJCscGo0Dc4YZkZfL9pjtaY02w&oe=6A67B213",
+                    "width": 240
+                  },
+                  {
+                    "height": 720,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s720x720_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBrEJM7TM9mzhl8rl57Pb3zz1UrmsDSYqmgScDAi1iVLQ&oe=6A67B213",
+                    "width": 720
+                  },
+                  {
+                    "height": 720,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s720x720_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBrEJM7TM9mzhl8rl57Pb3zz1UrmsDSYqmgScDAi1iVLQ&oe=6A67B213",
+                    "width": 720
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s640x640_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAKkU3oDbMxvTb9oyyfZpOHKs006Y95qjhjK_tXQaOa6w&oe=6A67B213",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s480x480_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAA9f1Acbr4Ln1ypa3NmaZAhi0MDidlJ9PzWhEVrwzd6A&oe=6A67B213",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s320x320_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDGMeN-1ZSEnIZc5fH8c19U5zvxQeW59Am_bjPS9F63Qw&oe=6A67B213",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s240x240_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCrCGst1TnUX9JXxMUoYJ6-w2RZYQYal8kNm2tlfFo4fw&oe=6A67B213",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/732445205_17943979872245933_943431228331246459_n.jpg?stp=c0.280.720.720a_dst-jpg_e15_s150x150_tt6&_nc_cat=106&ig_cache_key=MzkzNjcxNzQxOTU4OTQyNTc1NjE3OTQzOTc5ODY5MjQ1OTMz.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=QRs6bG43i60Q7kNvwFnKu-Z&_nc_oc=AdqEvKRv3wQgjiaQmqFFV9YahLmUiKU3xYJS1g1RKnKAm2PAA-hnheJXvqCo9PF1myzeJckb9ciCrGZ5LF53gcnf&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQA7LJQxRSioCr3iUX6TKEt9oj0le_xWtRYXlD_TnBGxNA&oe=6A67B213",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3936029431024769083",
+              "id": "3936029431024769083_67321317932",
+              "code": "Daflendttg7",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "67321317932",
+                "id": "67321317932",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 5886,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 4,
+              "like_count": 32,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1136,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDg9O0iOQTGUxFkwIK1hRaFd1zxrT626uFP0-1rRcQeqw&oe=6A67BA7B",
+                    "width": 640
+                  },
+                  {
+                    "height": 852,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDC8fWLiRRk5BE8iRXaL9dHRFDFwEfaZKJWcCYt3YmHjg&oe=6A67BA7B",
+                    "width": 480
+                  },
+                  {
+                    "height": 568,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCiwNwWCvYe9m7BD2mrSdk8eGzQFrZKvS1GUHaxL3hs2Q&oe=6A67BA7B",
+                    "width": 320
+                  },
+                  {
+                    "height": 426,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDx17tdunAuWiZDLb-DTjL94TX4IF9rO9e7XPWzb0bWbg&oe=6A67BA7B",
+                    "width": 240
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCrUSHAcgojA3I-l52sVQyYQn45WkPFAMyjZuBLLlE_zQ&oe=6A67BA7B",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCrUSHAcgojA3I-l52sVQyYQn45WkPFAMyjZuBLLlE_zQ&oe=6A67BA7B",
+                    "width": 640
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s640x639_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCrUSHAcgojA3I-l52sVQyYQn45WkPFAMyjZuBLLlE_zQ&oe=6A67BA7B",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s480x480_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBUkWn9mDoVccorrkCcOx4sOfB6h1cEuUNytgckPoFkew&oe=6A67BA7B",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s320x320_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDBnZIGjoGleYcYiFuA5A-NMU7GFfVN-_GnmwnQrGlEzg&oe=6A67BA7B",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s240x240_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBKasRBveyalmxNHaU8l3Lb4AwVl1-Ix6l6MoKfLu2JCg&oe=6A67BA7B",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.71878-15/731528909_1329210909367749_6305357411388955699_n.jpg?stp=c0.248.640.640a_dst-jpg_e15_s150x150_tt6&_nc_cat=104&ig_cache_key=MzkzNjAyOTQzMTAyNDc2OTA4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V9qHLHkvI5gQ7kNvwF-CyJd&_nc_oc=AdpcWF7OS6BAOEE5sbXFMj2UTit6KtbwU1bbbT_9Rl-SpBXQwekgsGkQ2Pq7tuejWG4W1LS5xd9YTVt1CXm_pDaW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBudWrAycz0oEXpehFqfdXf1w5c64WCT2LR0xf4KE5igQ&oe=6A67BA7B",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": []
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3935206773575998911",
+              "id": "3935206773575998911_29586504",
+              "code": "DacqbYAtV2_",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "29586504",
+                "id": "29586504",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 47867,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 40,
+              "like_count": 309,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1920,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCA43zCMZz9F-yyNRjPzIFCvSvC9OdIFeOToEFhjAq5dg&oe=6A67B989",
+                    "width": 1080
+                  },
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e35_p720x720_sh2.08_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQD3wdi-u4uTSiwsToaTd4f6yNfoR8JMyGdxUilEdyHInw&oe=6A67B989",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBeHctH6nNduVHGTQItH-hkFaikETKUBzTnOcbIWbT18g&oe=6A67B989",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDjO_uV7Uh2yq_gVzcmSoVGux0bp83Jn_hRRSvJceiITA&oe=6A67B989",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQBH-JLWLbQi_kD6E4YeeZRp24MD9cpy0lN6Sq6lYvvQJA&oe=6A67B989",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQD5Pkr6UZOX54xP-OTmcOGb31itdppF-sHyxonLjwIikA&oe=6A67B989",
+                    "width": 240
+                  },
+                  {
+                    "height": 1080,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s1080x1080_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDigxu2j0q-o3mxksZMRfkng6ZinNTtXmV1yohdi2Hi1w&oe=6A67B989",
+                    "width": 1080
+                  },
+                  {
+                    "height": 750,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s750x750_sh2.08_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDvOhxQHbuN_VItW4G7hSXIDpiHKzEzh7VRY3OYHCuAVA&oe=6A67B989",
+                    "width": 750
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s640x640_sh2.08_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAuIegMJrdlyqpPksnu_33ZHxR1HP6rgrxpOUOH5p0jKQ&oe=6A67B989",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s480x480_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAkhojAAfQ6z7GbUSuNWjXiRbxh1cmIi0nzGB9_t6f_eA&oe=6A67B989",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s320x320_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCYOf0WRnHEUEjyZqkeLD4T73UdphDSxsG7g_N93rTBFA&oe=6A67B989",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s240x240_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCpQPLGZQRGj3WPb1tccLWyrjDCbY4X3Tv64sYz4lKm1A&oe=6A67B989",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/733096933_18616425886018505_2733263961256726884_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s150x150_tt6&_nc_cat=103&ig_cache_key=MzkzNTIwNjc3MzU3NTk5ODkxMTE4NjE2NDI1ODgzMDE4NTA1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=Kd9EAk0iqKIQ7kNvwFgxmmO&_nc_oc=AdpCkrgpez5YxSGxcwjxo8QW-WtZFaQWe5dt-dp4cGelC8Vg5brP8tbgcBCtAQ9qinWhpylXhscxMun7zosxh2zS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAsobEZE1_RS0dp3KtYFK-o6NE7pmrIfv9ZA1MDo6u57A&oe=6A67B989",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": [
+                {
+                  "aigm_account_label_info": null,
+                  "id": "67321317932"
+                },
+                {
+                  "aigm_account_label_info": null,
+                  "id": "80339984236"
+                },
+                {
+                  "aigm_account_label_info": null,
+                  "id": "2242515727"
+                }
+              ]
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        },
+        {
+          "node": {
+            "media": {
+              "pk": "3933128310446504198",
+              "id": "3933128310446504198_6209072790",
+              "code": "DaVR1wYMjkG",
+              "media_overlay_info": null,
+              "carousel_media": null,
+              "boosted_status": null,
+              "boost_unavailable_identifier": null,
+              "boost_unavailable_reason": null,
+              "user": {
+                "pk": "6209072790",
+                "id": "6209072790",
+                "aigm_account_label_info": null
+              },
+              "product_type": "clips",
+              "play_count": 12731,
+              "view_count": null,
+              "like_and_view_counts_disabled": false,
+              "comment_count": 4,
+              "like_count": 101,
+              "audience": null,
+              "clips_tab_pinned_user_ids": [],
+              "has_views_fetching": true,
+              "media_type": 2,
+              "image_versions2": {
+                "candidates": [
+                  {
+                    "height": 1920,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAsulyH_zREw9QEFefTTSq-N-Fh7sLTWWiivlu4zx3qSg&oe=6A67A4A4",
+                    "width": 1080
+                  },
+                  {
+                    "height": 1280,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e35_p720x720_sh2.08_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQDtNGpvMHgoeQAXhoWQX8XYUj0NiT9zRFlu44aOM4aXQg&oe=6A67A4A4",
+                    "width": 720
+                  },
+                  {
+                    "height": 1138,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQD6Vn_l_dV7OSOqySoy2gEWcIJQTX5W6fElURA8pls6Ow&oe=6A67A4A4",
+                    "width": 640
+                  },
+                  {
+                    "height": 853,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e15_p480x480_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCJIViervzPRawVsmt-g3_9a_Gy4ZcnP12dR9It_qT9YQ&oe=6A67A4A4",
+                    "width": 480
+                  },
+                  {
+                    "height": 569,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e15_p320x320_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQA9iMGOPAnW-Co45dTeBdFGOEh-iJUerRAhyTkb5YH5hA&oe=6A67A4A4",
+                    "width": 320
+                  },
+                  {
+                    "height": 427,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=dst-jpg_e15_p240x240_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQD-yHYcPsyuokzzPspNYhQ6QNXqnj9f9eOKQswCYauOdA&oe=6A67A4A4",
+                    "width": 240
+                  },
+                  {
+                    "height": 1080,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s1080x1080_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAXPhVoOFZmX9Q-KneMMJoisxzB69t4oqznNMubESPPXA&oe=6A67A4A4",
+                    "width": 1080
+                  },
+                  {
+                    "height": 750,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s750x750_sh2.08_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQArcvOqv60Y0IeW3X58EfI_EZAL0G0bix0pcLItAgzy2Q&oe=6A67A4A4",
+                    "width": 750
+                  },
+                  {
+                    "height": 640,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e35_s640x640_sh2.08_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAT6nmMev2oslgUxHJLjrzzL8oak8dQ5elzpBiT5aVg6w&oe=6A67A4A4",
+                    "width": 640
+                  },
+                  {
+                    "height": 480,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s480x480_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC7Lx17w6_T7ulocTHY9OyOACHF5cTMFjYRIkHTYRW97w&oe=6A67A4A4",
+                    "width": 480
+                  },
+                  {
+                    "height": 320,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s320x320_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQC1Ex1jE4eNmRbW3GsvREriztEiOBkIIeXYDmM8f4QmVg&oe=6A67A4A4",
+                    "width": 320
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s240x240_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQAl6j6LjPDoGABVkx5LG-EwLY4Gnv0HeXYsNQKWTzR7ug&oe=6A67A4A4",
+                    "width": 240
+                  },
+                  {
+                    "height": 150,
+                    "url": "https://instagram.frix7-1.fna.fbcdn.net/v/t51.82787-15/734591635_18384625912200791_6202688337644112716_n.jpg?stp=c0.420.1080.1080a_dst-jpg_e15_s150x150_tt6&_nc_cat=110&ig_cache_key=MzkzMzEyODMxMDQ0NjUwNDE5ODE4Mzg0NjI1OTA2MjAwNzkx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=oeNpgdbREw4Q7kNvwETc0RC&_nc_oc=AdoSWP6KPEaC31FTu9zQvMKyX5fD3mjDlbpgtoonlSEtnNrMi_s9BYDTEtaxlpZddzWPe0nZ_rpxTltpTj1pU_pD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.frix7-1.fna&_nc_gid=er75GNHSTXDUubAsz6LrRw&_nc_ss=7a22e&oh=00_AQCpMScfd1vaCVf-nwxj4zXDnSqZu8KLOvIbUjVrQzJ4sA&oe=6A67A4A4",
+                    "width": 150
+                  }
+                ]
+              },
+              "preview": null,
+              "original_height": 1920,
+              "original_width": 1080,
+              "ai_interactive_embodiment_attachment_style_info": null,
+              "coauthor_producers": [
+                {
+                  "aigm_account_label_info": null,
+                  "id": "67321317932"
+                }
+              ]
+            },
+            "__typename": "XDTClipsItemDict"
+          },
+          "cursor": ""
+        }
+      ],
+      "page_info": {
+        "end_cursor": "QVFEZTdqaDlmWHA4VkZkeUh4b3U4Y2F1VWhZWUtfdTktdWpEd3dQRmQ0TkpteW9Tb3d1bEVybTBXNnprcDZUTzBlN01vdHhManY2YjZ2aUh1YmdLeEZBVA==",
+        "has_next_page": true,
+        "has_previous_page": false,
+        "start_cursor": null
+      }
+    },
+    "xdt_viewer": {
+      "user": null
+    }
+  },
+  "extensions": {
+    "is_final": true,
+    "server_metadata": {
+      "request_start_time_ms": 1784797731001,
+      "time_at_flush_ms": 1784797732211
+    }
+  },
+  "status": "ok"
+}
