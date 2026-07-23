@@ -87,7 +87,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if user_id in last_total_reach:
 
-        budget = text.replace(" ", "").replace("₽", "").replace("руб", "")
+        budget = re.sub(r"[^\d]", "", text)
 
         if budget.isdigit():
 
