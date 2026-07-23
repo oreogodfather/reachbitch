@@ -104,29 +104,36 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if user_id in last_total_reach:
 
-        budget = re.sub(r"[^\d]", "", text)
-
-        if budget.isdigit():
-
-            budget = int(budget)
-
-            views = last_total_reach[user_id]
-
-            cpv = budget / views
-
-            await update.message.reply_text(
-
-                f"💰 Бюджет: <b>{budget:,} ₽</b>\n"
-                f"👀 Охват: <b>{views:,}</b>\n"
-                f"📈 CPV: <b>{cpv:.4f} ₽</b>",
-
-                parse_mode="HTML"
-
-            )
-
+        # Если пользователь прислал новую ссылку —
+        # начинаем новый расчет, а не считаем это бюджетом.
+        if extract_urls(text):
             del last_total_reach[user_id]
 
-            return
+        else:
+
+            budget = re.sub(r"[^\d]", "", text)
+
+            if budget.isdigit():
+
+                budget = int(budget)
+
+                views = last_total_reach[user_id]
+
+                cpv = budget / views
+
+                await update.message.reply_text(
+
+                    f"💰 Бюджет: <b>{budget:,} ₽</b>\n"
+                    f"👀 Охват: <b>{views:,}</b>\n"
+                    f"📈 CPV: <b>{cpv:.4f} ₽</b>",
+
+                    parse_mode="HTML"
+
+                )
+
+                del last_total_reach[user_id]
+
+                return
     if not urls:
 
         await update.message.reply_text(
