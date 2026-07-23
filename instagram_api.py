@@ -100,7 +100,7 @@ def get_profile_reels(user_id):
         "variables": json.dumps({
             "data": {
                 "include_feed_video": True,
-                "page_size": 24,
+                "page_size": 100,
                 "target_user_id": str(user_id)
             }
         })
