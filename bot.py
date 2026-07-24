@@ -194,7 +194,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 continue
             if "views_raw" in stats:
-                total_views += int(stats["views"])
+                total_views += int(stats["views_raw"])
                 views_for_copy.append(str(stats["views"]))
             results.append(
                 format_stats(stats)
