@@ -13,6 +13,7 @@ from urllib.parse import urlparse
 import os
 import re
 import traceback
+import asyncio
 
 from telegram_api import (
     get_telegram_stats,
@@ -185,7 +186,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 stats = await get_instagram_stats(url)
 
             elif platform == "tiktok":
-                stats = get_tiktok_stats(url)    
+                stats = await asyncio.to_thread(
+                    get_tiktok_stats,
+                    url,
+                )    
 
             else:
                 continue

@@ -17,7 +17,7 @@ def get_tiktok_stats(url: str):
 
     command = [
         "yt-dlp",
-        "-J",
+        "--print-json",
         "--no-warnings",
         "--no-playlist",
         "--no-call-home",
@@ -25,28 +25,57 @@ def get_tiktok_stats(url: str):
     ]
 
     try:
+
         result = subprocess.run(
             command,
             capture_output=True,
             text=True,
+            timeout=15,
             check=True,
         )
+
     except FileNotFoundError:
-        raise Exception(
-            "yt-dlp is not installed."
-        )
+        raise Exception("yt-dlp is not installed.")
+
+    except subprocess.TimeoutExpired:
+        raise Exception("yt-dlp timed out after 15 seconds.")
 
     except subprocess.CalledProcessError as e:
+
         raise Exception(
-            f"yt-dlp failed:\n{e.stderr or e.stdout}"
+            f"""
+yt-dlp exited with code {e.returncode}
+
+STDOUT:
+{e.stdout}
+
+STDERR:
+{e.stderr}
+"""
         )
+
+    if not result.stdout.strip():
+        raise Exception("yt-dlp returned empty output.")
 
     try:
         data = json.loads(result.stdout)
+
     except json.JSONDecodeError:
+
         raise Exception(
-            "yt-dlp returned invalid JSON."
+            f"""
+yt-dlp returned invalid JSON.
+
+STDOUT:
+{result.stdout}
+
+STDERR:
+{result.stderr}
+"""
         )
+
+    if not isinstance(data, dict):
+        raise Exception("yt-dlp returned unexpected response.")
 
     views = int(data.get("view_count") or 0)
     likes = int(data.get("like_count") or 0)
@@ -68,20 +97,48 @@ def get_tiktok_stats(url: str):
             2,
         )
 
+    channel = (
+        data.get("uploader")
+        or data.get("channel")
+        or data.get("creator")
+        or ""
+    )
+
+    title = (
+        data.get("title")
+        or data.get("fulltitle")
+        or data.get("description")
+        or ""
+    )
+
     return {
+
         "platform": "TikTok",
-        "channel": data.get("uploader", ""),
-        "title": data.get("title", ""),
+
+        "channel": channel,
+
+        "title": title,
+
         "views": _format_number(views),
+
         "reactions": _format_number(likes),
+
         "comments": _format_number(comments),
+
         "shares": _format_number(shares),
+
         "er": er,
+
         "url": data.get("webpage_url") or url,
+
         "views_raw": views,
+
         "likes_raw": likes,
+
         "comments_raw": comments,
+
         "shares_raw": shares,
+
         "video_id": data.get("id"),
     }
 
