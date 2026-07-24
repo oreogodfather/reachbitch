@@ -211,7 +211,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"❌ {e}\n{url}"
         )
 
-        views_for_copy.append("N/A")
+            views_for_copy.append("N/A")
 
     if not results:
 
