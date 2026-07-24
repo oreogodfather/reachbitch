@@ -27,6 +27,10 @@ from instagram_api import (
     get_instagram_stats,
 )
 
+from tiktok_api import (
+    get_tiktok_stats,
+)
+
 load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
@@ -55,6 +59,9 @@ def detect_platform(url: str):
 
     if "instagram.com" in host:
         return "instagram"
+
+    if "tiktok.com" in host or "vt.tiktok.com" in host:
+        return "tiktok"
 
     return None
 
@@ -93,6 +100,19 @@ def format_stats(stats: dict):
             f"💬 <b>{stats['comments']}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
+
+    if stats["platform"] == "TikTok":
+
+        return (
+            f"⚫ <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
+            f"<i>{stats['title']}</i>\n\n"
+            f"👀 <code>{stats['views']}</code>\n"
+            f"❤️ <b>{stats['reactions']}</b>\n"
+            f"💬 <b>{stats['comments']}</b>\n"
+            f"🔁 <b>{stats['shares']}</b>\n"
+            f"📈 <b>{stats['er']}%</b>"
+        )
+
     return "Неизвестная платформа"
 
 
@@ -163,6 +183,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 
             elif platform == "instagram":
                 stats = await get_instagram_stats(url)
+
+            elif platform == "tiktok":
+                stats = get_tiktok_stats(url)    
 
             else:
                 continue
