@@ -20,7 +20,6 @@ def get_tiktok_stats(url: str):
         "--print-json",
         "--no-warnings",
         "--no-playlist",
-        "--no-call-home",
         url,
     ]
 
@@ -35,47 +34,50 @@ def get_tiktok_stats(url: str):
         )
 
     except FileNotFoundError:
-        raise Exception("yt-dlp is not installed.")
+        raise Exception("На сервере не установлен yt-dlp.")
 
     except subprocess.TimeoutExpired:
-        raise Exception("yt-dlp timed out after 15 seconds.")
+        raise Exception("TikTok слишком долго отвечает.")
 
     except subprocess.CalledProcessError as e:
 
+        error = (e.stderr or e.stdout or "").lower()
+
+        if "your ip address is blocked" in error:
+            raise Exception(
+                "TikTok ограничил доступ к этому видео с IP сервера."
+            )
+
+        if "private" in error:
+            raise Exception(
+                "Видео является приватным."
+            )
+
+        if "video unavailable" in error:
+            raise Exception(
+                "Видео недоступно."
+            )
+
+        if "not available" in error:
+            raise Exception(
+                "Видео недоступно."
+            )
+
         raise Exception(
-            f"""
-yt-dlp exited with code {e.returncode}
-
-STDOUT:
-{e.stdout}
-
-STDERR:
-{e.stderr}
-"""
+            "Не удалось получить данные TikTok."
         )
 
     if not result.stdout.strip():
-        raise Exception("yt-dlp returned empty output.")
+        raise Exception("TikTok не вернул данные.")
 
     try:
         data = json.loads(result.stdout)
 
     except json.JSONDecodeError:
-
-        raise Exception(
-            f"""
-yt-dlp returned invalid JSON.
-
-STDOUT:
-{result.stdout}
-
-STDERR:
-{result.stderr}
-"""
-        )
+        raise Exception("Некорректный ответ TikTok.")
 
     if not isinstance(data, dict):
-        raise Exception("yt-dlp returned unexpected response.")
+        raise Exception("Некорректный ответ TikTok.")
 
     views = int(data.get("view_count") or 0)
     likes = int(data.get("like_count") or 0)
@@ -119,7 +121,7 @@ STDERR:
 
         "title": title,
 
-        "views": f"{views}",
+        "views": str(views),
 
         "reactions": _format_number(likes),
 
