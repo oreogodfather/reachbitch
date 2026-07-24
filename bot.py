@@ -200,7 +200,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 format_stats(stats)
             )
 
-        except Exception:
+        except Exception as e:
 
             print("\n" + "=" * 80)
             print(f"Ошибка при обработке ссылки:\n{url}\n")
@@ -208,9 +208,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             print("=" * 80 + "\n")
 
             results.append(
-                f"❌ Не удалось получить статистику\n{url}"
-            )
-            views_for_copy.append("N/A")
+                f"❌ {e}\n{url}"
+        )
+
+        views_for_copy.append("N/A")
 
     if not results:
 
