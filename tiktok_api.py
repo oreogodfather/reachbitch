@@ -119,7 +119,7 @@ STDERR:
 
         "title": title,
 
-        "views": f"{views:,}".replace(",", " "),
+        "views": f"{views}",
 
         "reactions": _format_number(likes),
 
