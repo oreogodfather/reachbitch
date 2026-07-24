@@ -103,6 +103,8 @@ async def get_youtube_stats(url: str):
 
         "views": views,
 
+        "views_raw": views,
+
         "reactions": format_number(likes),
 
         "shares": "—",

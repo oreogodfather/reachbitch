@@ -102,6 +102,8 @@ async def get_telegram_stats(url: str):
 
         "views": views,
 
+        "views_raw": views,
+
         "reactions": format_number(reactions_total),
 
         "shares": format_number(shares),
