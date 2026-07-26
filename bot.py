@@ -165,9 +165,10 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
     }
 
     await update.message.reply_text(
-        "Напиши название проекта/посева следующим сообщением 👇\n\n"
-        "💡 Нужна ссылка на отчёт (гуглдок и т.п.)? Сразу укажи в команде: "
-        "<code>/title Название — ссылка</code>",
+        "Напиши название проекта следующим сообщением 👇\n\n"
+        "💡 Пришли в ответ название проекта и ссылку на табличку с отчетом — "
+        "тогда название станет гиперссылкой. Например: "
+        "<code>Название проекта https://docs.google.com/...</code>",
         parse_mode="HTML",
     )
 
@@ -209,6 +210,24 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def extract_urls(text: str):
     return re.findall(r"https?://[^\s]+", text)
+
+
+def is_bare_url_message(text: str) -> bool:
+    """
+    True, если сообщение — это просто ссылка (или несколько) без своего текста.
+    Такое сообщение — новый запрос на статистику, а не название с гиперссылкой.
+    """
+
+    urls = extract_urls(text)
+
+    if not urls:
+        return False
+
+    stripped = text
+    for url in urls:
+        stripped = stripped.replace(url, "")
+
+    return not stripped.strip(" -—:|")
 
 
 def build_title_html(raw_title: str) -> str:
@@ -477,7 +496,8 @@ async def build_message(urls, previous_snapshots=None, has_title=False):
         if not has_title:
             message += (
                 "\n\n📝 Хочешь добавить название проекта? "
-                "Ответь на это сообщение командой <code>/title</code>"
+                "Ответь на это сообщение командой <code>/title</code> — "
+                "можно сразу с ссылкой на отчет, и название станет гиперссылкой."
             )
 
     return message, total_views, new_snapshots
@@ -496,8 +516,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Пользователь прислал название после команды /title
     if user_id in pending_title:
 
-        # Если вместо названия прислали новую ссылку — отменяем ожидание.
-        if extract_urls(text):
+        # Если прислали голую ссылку (без текста) — это новый запрос
+        # статистики, а не название. Если ссылка идет с текстом —
+        # считаем это названием с гиперссылкой.
+        if is_bare_url_message(text):
             del pending_title[user_id]
 
         else:
