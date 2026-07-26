@@ -364,6 +364,10 @@ def parse_budget(text: str):
         else:
             cleaned = cleaned.replace(",", "")
 
+    elif cleaned.count(".") > 1:
+        # несколько точек — это разделители тысяч (европейский стиль), не копейки
+        cleaned = cleaned.replace(".", "")
+
     try:
         return float(cleaned)
     except ValueError:
@@ -536,12 +540,12 @@ def fmt_delta(delta):
 
 def fmt_float_delta(delta):
 
-    if delta is None or abs(delta) < 0.0001:
+    if delta is None or abs(delta) < 0.005:
         return ""
 
     sign = "+" if delta > 0 else ""
 
-    return f" ({sign}{delta:.4f})"
+    return f" ({sign}{delta:.2f})"
 
 
 def apply_deltas(stats, previous_snapshot):
@@ -719,7 +723,7 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
             message += (
                 "\n\n"
                 f"💰 <b>Бюджет:</b> {format_money(budget)} ₽\n"
-                f"📈 <b>CPV:</b> {cpv:.4f} ₽{fmt_float_delta(cpv_delta)}"
+                f"📈 <b>CPV:</b> {cpv:.2f} ₽{fmt_float_delta(cpv_delta)}"
             )
 
         else:
