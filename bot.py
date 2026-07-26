@@ -117,8 +117,34 @@ async def get_counter(key):
     return int(value) if value else 0
 
 
+CHAT_LOG_LIMIT = 200  # сколько последних сообщений на чат храним в логе для /clean
+
+
+async def log_message(chat_id, message_id, is_stat=False):
+    """
+    Запоминает id сообщения в чате и признак "это пост со статистикой".
+    Нужно для команды /clean. Не должно ронять бота.
+    """
+
+    try:
+        key = f"chatlog:{chat_id}"
+        await redis.lpush(key, json.dumps({"id": message_id, "stat": is_stat}))
+        await redis.ltrim(key, 0, CHAT_LOG_LIMIT - 1)
+        await redis.expire(key, MESSAGE_DATA_TTL)
+    except Exception:
+        traceback.print_exc()
+
+
+async def reply_and_log(update, text, is_stat=False, **kwargs):
+    msg = await update.message.reply_text(text, **kwargs)
+    await log_message(update.effective_chat.id, msg.message_id, is_stat)
+    return msg
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
+    await log_message(update.effective_chat.id, update.message.message_id)
+    await reply_and_log(
+        update,
         "👋 Привет!\n\n"
         "Пришли одну или несколько ссылок на Telegram или YouTube."
     )
@@ -126,10 +152,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+    await log_message(update.effective_chat.id, update.message.message_id)
+
     replied = update.message.reply_to_message
 
     if not replied or replied.from_user.id != context.bot.id:
-        await update.message.reply_text(
+        await reply_and_log(
+            update,
             "Ответь этой командой на сообщение со статистикой, "
             "которое хочешь назвать."
         )
@@ -138,7 +167,8 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
     entry = await load_message_data(replied.message_id)
 
     if not entry:
-        await update.message.reply_text(
+        await reply_and_log(
+            update,
             "Не нашел данные по этому сообщению — оно устарело."
         )
         return
@@ -156,7 +186,7 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
             raw_title,
         )
 
-        await update.message.reply_text(f"Готово, назвал: «{raw_title}» ✅")
+        await reply_and_log(update, f"Готово, назвал: «{raw_title}» ✅")
         return
 
     pending_title[update.effective_user.id] = {
@@ -164,7 +194,8 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "message_id": replied.message_id,
     }
 
-    await update.message.reply_text(
+    await reply_and_log(
+        update,
         "Напиши название проекта следующим сообщением 👇\n\n"
         "💡 Пришли в ответ название проекта и ссылку на табличку с отчетом — "
         "тогда название станет гиперссылкой. Например: "
@@ -174,6 +205,8 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    await log_message(update.effective_chat.id, update.message.message_id)
 
     username = (update.effective_user.username or "").lower()
 
@@ -202,10 +235,42 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         lines.append(f"{emoji} {label}: <b>{count}</b>")
 
-    await update.message.reply_text(
+    await reply_and_log(
+        update,
         "\n".join(lines),
         parse_mode="HTML",
     )
+
+
+async def cmd_clean(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Удаляет из последних сообщений чата все, кроме постов со статистикой."""
+
+    chat_id = update.effective_chat.id
+    key = f"chatlog:{chat_id}"
+
+    raw_entries = await redis.lrange(key, 0, 49)
+    entries = [json.loads(raw) for raw in raw_entries]
+
+    deleted = 0
+
+    for entry in entries:
+
+        if entry.get("stat"):
+            continue
+
+        try:
+            await context.bot.delete_message(chat_id, entry["id"])
+            deleted += 1
+        except Exception:
+            pass
+
+    if entries:
+        await redis.ltrim(key, len(entries), -1)
+
+    try:
+        await context.bot.delete_message(chat_id, update.message.message_id)
+    except Exception:
+        pass
 
 
 def extract_urls(text: str):
@@ -513,6 +578,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     urls = extract_urls(update.message.text)
 
+    await log_message(update.effective_chat.id, update.message.message_id)
+
     # Пользователь прислал название после команды /title
     if user_id in pending_title:
 
@@ -529,7 +596,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             entry = await load_message_data(pending["message_id"])
 
             if not entry:
-                await update.message.reply_text(
+                await reply_and_log(
+                    update,
                     "Не нашел данные по этому сообщению — оно устарело."
                 )
                 return
@@ -544,7 +612,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 title,
             )
 
-            await update.message.reply_text(f"Готово, назвал: «{title}» ✅")
+            await reply_and_log(update, f"Готово, назвал: «{title}» ✅")
 
             return
 
@@ -568,7 +636,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
                 cpv = budget / views
 
-                await update.message.reply_text(
+                await reply_and_log(
+
+                    update,
 
                     f"💰 Бюджет: <b>{budget:,} ₽</b>\n"
                     f"👀 Охват: <b>{views:,}</b>\n"
@@ -583,7 +653,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 return
     if not urls:
 
-        await update.message.reply_text(
+        await reply_and_log(
+            update,
             "Не нашел ни одной ссылки 😔"
         )
 
@@ -595,7 +666,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if message is None:
 
-        await update.message.reply_text(
+        await reply_and_log(
+            update,
             "Не нашел поддерживаемых ссылок."
         )
 
@@ -611,6 +683,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=REFRESH_KEYBOARD,
     )
 
+    await log_message(update.effective_chat.id, sent.message_id, is_stat=True)
     await save_message_data(sent.message_id, urls, snapshots, base_text=message)
 
 
@@ -688,6 +761,7 @@ app = (
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("title", cmd_title))
 app.add_handler(CommandHandler("stats", cmd_stats))
+app.add_handler(CommandHandler("clean", cmd_clean))
 
 app.add_handler(
     MessageHandler(
