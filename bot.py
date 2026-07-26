@@ -14,9 +14,11 @@ from telegram.ext import (
 
 from dotenv import load_dotenv
 from urllib.parse import urlparse
+from upstash_redis.asyncio import Redis
 
 import os
 import re
+import json
 import traceback
 import asyncio
 
@@ -42,8 +44,12 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 last_total_reach = {}
 
-# message_id -> {"urls": [...], "snapshots": {url: {"views": int, "reactions": int, "comments": int, "shares": int}}}
-message_data = {}
+redis = Redis(
+    url=os.getenv("UPSTASH_REDIS_REST_URL"),
+    token=os.getenv("UPSTASH_REDIS_REST_TOKEN"),
+)
+
+MESSAGE_DATA_TTL = 60 * 60 * 24 * 14  # две недели, потом запись сама протухнет
 
 # какое сырое поле стоит за каждой строкой в format_stats
 RAW_FIELDS = {
@@ -52,6 +58,30 @@ RAW_FIELDS = {
     "comments":  ("comments_raw", None),
     "shares":    ("shares_raw", None),
 }
+
+
+async def save_message_data(message_id, urls, snapshots):
+
+    payload = json.dumps({
+        "urls": urls,
+        "snapshots": snapshots,
+    })
+
+    await redis.set(
+        f"msg:{message_id}",
+        payload,
+        ex=MESSAGE_DATA_TTL,
+    )
+
+
+async def load_message_data(message_id):
+
+    raw = await redis.get(f"msg:{message_id}")
+
+    if not raw:
+        return None
+
+    return json.loads(raw)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -351,10 +381,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=REFRESH_KEYBOARD,
     )
 
-    message_data[sent.message_id] = {
-        "urls": urls,
-        "snapshots": snapshots,
-    }
+    await save_message_data(sent.message_id, urls, snapshots)
 
 
 async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -362,7 +389,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     message_id = query.message.message_id
 
-    entry = message_data.get(message_id)
+    entry = await load_message_data(message_id)
 
     if not entry:
         await query.answer("Ссылки устарели, пришли заново 😔", show_alert=True)
@@ -383,10 +410,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if total_views:
         last_total_reach[user_id] = total_views
 
-    message_data[message_id] = {
-        "urls": entry["urls"],
-        "snapshots": new_snapshots,
-    }
+    await save_message_data(message_id, entry["urls"], new_snapshots)
 
     try:
         await query.edit_message_text(
