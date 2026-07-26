@@ -179,7 +179,7 @@ def format_stats(stats: dict):
 
         return (
             f"🔵 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n\n"
-            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"👀 <code>{stats['views']}</code>{views_d}\n"
             f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
             f"🔁 <b>{stats['shares']}{shares_d}</b>\n"
             f"💬 <b>{stats['comments']}{comments_d}</b>\n"
@@ -191,7 +191,7 @@ def format_stats(stats: dict):
         return (
             f"🔴 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"👀 <code>{stats['views']}</code>{views_d}\n"
             f"👍 <b>{stats['reactions']}{reactions_d}</b>\n"
             f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
@@ -202,7 +202,7 @@ def format_stats(stats: dict):
         return (
             f"🟣 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"👀 <code>{stats['views']}</code>{views_d}\n"
             f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
             f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
@@ -213,7 +213,7 @@ def format_stats(stats: dict):
         return (
             f"⚫ <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"👀 <code>{stats['views']}</code>{views_d}\n"
             f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
             f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"🔁 <b>{stats['shares']}{shares_d}</b>\n"
