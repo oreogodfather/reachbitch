@@ -11,9 +11,9 @@ HEADERS = {
     "accept": "*/*",
     "content-type": "application/x-www-form-urlencoded",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-    "x-csrftoken": "YuvV-QRvpR2Ggzgk0cTg1T",
+    "x-csrftoken": "iPbAaFWdMRvCPiYXomPIv6",
     "x-ig-app-id": "936619743392459",
-    "Cookie": "csrftoken=YuvV-QRvpR2Ggzgk0cTg1T; mid=aOia4gALAAHSq3em2E34YEIFkMCC"
+    "Cookie": "ig_did=1F32F6CE-484A-495E-ABB2-05CDC1509B13; csrftoken=iPbAaFWdMRvCPiYXomPIv6; datr=mR9mas2v5S4QMF_zET_IgPyf; mid=amYfmQAEAAHbYsXQU6qp56BQUcyJ; ps_l=1; ps_n=1; ig_nrcb=1; wd=437x796"
 }
 
 
