@@ -143,13 +143,32 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    # Название сразу аргументом: /title Отчёт — https://docs.google.com/...
+    if context.args:
+
+        raw_title = " ".join(context.args).strip()
+
+        await apply_title(
+            context.bot,
+            replied.chat_id,
+            replied.message_id,
+            entry,
+            raw_title,
+        )
+
+        await update.message.reply_text(f"Готово, назвал: «{raw_title}» ✅")
+        return
+
     pending_title[update.effective_user.id] = {
         "chat_id": replied.chat_id,
         "message_id": replied.message_id,
     }
 
     await update.message.reply_text(
-        "Напиши название проекта/посева следующим сообщением 👇"
+        "Напиши название проекта/посева следующим сообщением 👇\n\n"
+        "💡 Нужна ссылка на отчёт (гуглдок и т.п.)? Сразу укажи в команде: "
+        "<code>/title Название — ссылка</code>",
+        parse_mode="HTML",
     )
 
 
@@ -190,6 +209,51 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def extract_urls(text: str):
     return re.findall(r"https?://[^\s]+", text)
+
+
+def build_title_html(raw_title: str) -> str:
+    """
+    Собирает готовый HTML-фрагмент названия. Если в тексте есть ссылка —
+    делает из названия кликабельный гиперлинк (например, на гуглдок с отчетом).
+    """
+
+    urls = extract_urls(raw_title)
+
+    if not urls:
+        return f"<b>{html.escape(raw_title)}</b>"
+
+    link = urls[0]
+    label = raw_title.replace(link, "").strip(" -—:|")
+
+    if not label:
+        label = "Отчёт"
+
+    return f'<b><a href="{html.escape(link)}">{html.escape(label)}</a></b>'
+
+
+async def apply_title(bot, chat_id, message_id, entry, raw_title):
+
+    title_html = build_title_html(raw_title)
+    base_text = entry.get("base_text", "")
+
+    titled_text = f"{title_html}\n\n{base_text}"
+
+    await bot.edit_message_text(
+        chat_id=chat_id,
+        message_id=message_id,
+        text=titled_text,
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+        reply_markup=REFRESH_KEYBOARD,
+    )
+
+    await save_message_data(
+        message_id,
+        entry["urls"],
+        entry["snapshots"],
+        title=title_html,
+        base_text=base_text,
+    )
 
 
 def detect_platform(url: str):
@@ -449,25 +513,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 return
 
             title = text.strip()
-            base_text = entry.get("base_text", "")
 
-            titled_text = f"<b>{html.escape(title)}</b>\n\n{base_text}"
-
-            await context.bot.edit_message_text(
-                chat_id=pending["chat_id"],
-                message_id=pending["message_id"],
-                text=titled_text,
-                parse_mode="HTML",
-                disable_web_page_preview=True,
-                reply_markup=REFRESH_KEYBOARD,
-            )
-
-            await save_message_data(
+            await apply_title(
+                context.bot,
+                pending["chat_id"],
                 pending["message_id"],
-                entry["urls"],
-                entry["snapshots"],
-                title=title,
-                base_text=base_text,
+                entry,
+                title,
             )
 
             await update.message.reply_text(f"Готово, назвал: «{title}» ✅")
@@ -578,7 +630,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     if title:
-        message = f"<b>{html.escape(title)}</b>\n\n" + message
+        message = f"{title}\n\n" + message
 
     try:
         await query.edit_message_text(
