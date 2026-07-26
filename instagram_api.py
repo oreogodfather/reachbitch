@@ -40,7 +40,7 @@ def extract_shortcode(url):
     url = url.split("?")[0]
 
     match = re.search(
-        r"instagram\.com/(?:[^/]+/)?(?:reel|p)/([^/?]+)",
+        r"instagram\.com/(?:[^/]+/)?(?:reels?|p)/([^/?]+)",
         url
     )
 
