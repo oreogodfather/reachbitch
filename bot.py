@@ -49,7 +49,7 @@ redis = Redis(
     token=os.getenv("UPSTASH_REDIS_REST_TOKEN"),
 )
 
-MESSAGE_DATA_TTL = 60 * 60 * 24 * 14  # две недели, потом запись сама протухнет
+MESSAGE_DATA_TTL = 60 * 60 * 24 * 30  # месяц, потом запись сама протухнет
 
 # какое сырое поле стоит за каждой строкой в format_stats
 RAW_FIELDS = {
