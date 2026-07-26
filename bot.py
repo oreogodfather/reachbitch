@@ -41,7 +41,18 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 last_total_reach = {}
-message_urls = {}  # message_id -> list[str], для кнопки "Обновить"
+
+# message_id -> {"urls": [...], "snapshots": {url: {"views": int, "reactions": int, "comments": int, "shares": int}}}
+message_data = {}
+
+# какое сырое поле стоит за каждой строкой в format_stats
+RAW_FIELDS = {
+    "views":     ("views_raw", "views"),
+    "reactions": ("likes_raw", None),
+    "comments":  ("comments_raw", None),
+    "shares":    ("shares_raw", None),
+}
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -73,16 +84,75 @@ def detect_platform(url: str):
     return None
 
 
+def get_raw_value(stats, field):
+    """Достает сырое числовое значение поля, если оно вообще доступно."""
+
+    raw_key, fallback_key = RAW_FIELDS[field]
+
+    if raw_key in stats and stats[raw_key] is not None:
+        try:
+            return int(stats[raw_key])
+        except (TypeError, ValueError):
+            return None
+
+    if fallback_key and fallback_key in stats:
+        try:
+            return int(stats[fallback_key])
+        except (TypeError, ValueError):
+            return None
+
+    return None
+
+
+def snapshot_stats(stats):
+    return {
+        field: get_raw_value(stats, field)
+        for field in RAW_FIELDS
+    }
+
+
+def fmt_delta(delta):
+
+    if delta is None or delta == 0:
+        return ""
+
+    sign = "+" if delta > 0 else ""
+
+    return f" ({sign}{delta:,})"
+
+
+def apply_deltas(stats, previous_snapshot):
+    """Добавляет в stats поля вида '<field>_delta', если есть с чем сравнить."""
+
+    if not previous_snapshot:
+        return
+
+    for field in RAW_FIELDS:
+
+        new_value = get_raw_value(stats, field)
+        old_value = previous_snapshot.get(field)
+
+        if new_value is None or old_value is None:
+            continue
+
+        stats[f"{field}_delta"] = new_value - old_value
+
+
 def format_stats(stats: dict):
+
+    views_d     = fmt_delta(stats.get("views_delta"))
+    reactions_d = fmt_delta(stats.get("reactions_delta"))
+    comments_d  = fmt_delta(stats.get("comments_delta"))
+    shares_d    = fmt_delta(stats.get("shares_delta"))
 
     if stats["platform"] == "Telegram":
 
         return (
             f"🔵 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n\n"
-            f"👀 <code>{stats['views']}</code>\n"
-            f"❤️ <b>{stats['reactions']}</b>\n"
-            f"🔁 <b>{stats['shares']}</b>\n"
-            f"💬 <b>{stats['comments']}</b>\n"
+            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
+            f"🔁 <b>{stats['shares']}{shares_d}</b>\n"
+            f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
 
@@ -91,9 +161,9 @@ def format_stats(stats: dict):
         return (
             f"🔴 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}</code>\n"
-            f"👍 <b>{stats['reactions']}</b>\n"
-            f"💬 <b>{stats['comments']}</b>\n"
+            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"👍 <b>{stats['reactions']}{reactions_d}</b>\n"
+            f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
 
@@ -102,9 +172,9 @@ def format_stats(stats: dict):
         return (
             f"🟣 <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}</code>\n"
-            f"❤️ <b>{stats['reactions']}</b>\n"
-            f"💬 <b>{stats['comments']}</b>\n"
+            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
+            f"💬 <b>{stats['comments']}{comments_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
 
@@ -113,22 +183,28 @@ def format_stats(stats: dict):
         return (
             f"⚫ <a href='{stats['url']}'><b>{stats['channel']}</b></a>\n"
             f"<i>{stats['title']}</i>\n\n"
-            f"👀 <code>{stats['views']}</code>\n"
-            f"❤️ <b>{stats['reactions']}</b>\n"
-            f"💬 <b>{stats['comments']}</b>\n"
-            f"🔁 <b>{stats['shares']}</b>\n"
+            f"👀 <code>{stats['views']}{views_d}</code>\n"
+            f"❤️ <b>{stats['reactions']}{reactions_d}</b>\n"
+            f"💬 <b>{stats['comments']}{comments_d}</b>\n"
+            f"🔁 <b>{stats['shares']}{shares_d}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
 
     return "Неизвестная платформа"
 
 
-async def build_message(urls):
-    """Считает статистику по списку ссылок и собирает готовый текст."""
+async def build_message(urls, previous_snapshots=None):
+    """
+    Считает статистику по ссылкам, сравнивает с previous_snapshots (если есть)
+    и возвращает (текст сообщения, суммарный охват, новые снэпшоты для сохранения).
+    """
+
+    previous_snapshots = previous_snapshots or {}
 
     results = []
     total_views = 0
     views_for_copy = []
+    new_snapshots = {}
 
     for url in urls:
 
@@ -157,6 +233,9 @@ async def build_message(urls):
             else:
                 continue
 
+            apply_deltas(stats, previous_snapshots.get(url))
+            new_snapshots[url] = snapshot_stats(stats)
+
             if "views_raw" in stats:
                 total_views += int(stats["views_raw"])
                 views_for_copy.append(str(stats["views"]))
@@ -179,7 +258,7 @@ async def build_message(urls):
             views_for_copy.append("N/A")
 
     if not results:
-        return None, 0
+        return None, 0, new_snapshots
 
     message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
 
@@ -198,7 +277,7 @@ async def build_message(urls):
             "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
         )
 
-    return message, total_views
+    return message, total_views, new_snapshots
 
 
 REFRESH_KEYBOARD = InlineKeyboardMarkup([[
@@ -252,7 +331,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
-    message, total_views = await build_message(urls)
+    message, total_views, snapshots = await build_message(urls)
 
     if message is None:
 
@@ -272,7 +351,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=REFRESH_KEYBOARD,
     )
 
-    message_urls[sent.message_id] = urls
+    message_data[sent.message_id] = {
+        "urls": urls,
+        "snapshots": snapshots,
+    }
 
 
 async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -280,15 +362,18 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     message_id = query.message.message_id
 
-    urls = message_urls.get(message_id)
+    entry = message_data.get(message_id)
 
-    if not urls:
+    if not entry:
         await query.answer("Ссылки устарели, пришли заново 😔", show_alert=True)
         return
 
     await query.answer("Обновляю…")
 
-    message, total_views = await build_message(urls)
+    message, total_views, new_snapshots = await build_message(
+        entry["urls"],
+        entry["snapshots"],
+    )
 
     if message is None:
         return
@@ -297,6 +382,11 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if total_views:
         last_total_reach[user_id] = total_views
+
+    message_data[message_id] = {
+        "urls": entry["urls"],
+        "snapshots": new_snapshots,
+    }
 
     try:
         await query.edit_message_text(
