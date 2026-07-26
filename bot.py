@@ -22,6 +22,8 @@ import json
 import html
 import traceback
 import asyncio
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from telegram_api import (
     get_telegram_stats,
@@ -44,6 +46,7 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_USERNAME = "oreogod"
+ADMIN_CHAT_ID = 96168275
 
 # user_id -> {"chat_id":, "message_id":}
 pending_title = {}
@@ -633,7 +636,6 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
     total_views_delta = 0
     views_for_copy = []
     new_snapshots = {}
-    instagram_requests = 0
 
     for url in urls:
 
@@ -651,11 +653,6 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
                 stats = await get_youtube_stats(url)
 
             elif platform == "instagram":
-                # Instagram банит гостевые куки за слишком частые подряд идущие запросы,
-                # поэтому в пачке из нескольких инстаграм-ссылок разносим их по времени.
-                if instagram_requests > 0:
-                    await asyncio.sleep(2)
-                instagram_requests += 1
                 stats = await get_instagram_stats(url)
 
             elif platform == "tiktok":
@@ -908,6 +905,9 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if title:
         message = f"{title}\n\n" + message
 
+    updated_at = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%H:%M")
+    message += f"\n\n🕐 Обновлено в {updated_at}"
+
     try:
         await query.edit_message_text(
             message,
@@ -928,6 +928,18 @@ async def post_init(app):
     except Exception:
         print("\n" + "=" * 80)
         print("Ошибка запуска Telethon:\n")
+        traceback.print_exc()
+        print("=" * 80 + "\n")
+
+    try:
+        now = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%d.%m %H:%M")
+        await app.bot.send_message(
+            chat_id=ADMIN_CHAT_ID,
+            text=f"🚀 Задеплоена новая версия бота ({now} МСК)",
+        )
+    except Exception:
+        print("\n" + "=" * 80)
+        print("Ошибка отправки уведомления о деплое:\n")
         traceback.print_exc()
         print("=" * 80 + "\n")
 
