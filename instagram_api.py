@@ -1,17 +1,132 @@
-import asyncio
 import json
-import subprocess
+import re
+import requests
+from urllib.parse import quote
 
 
-def _format_number(value: int):
+GRAPHQL_URL = "https://www.instagram.com/graphql/query"
+
+
+HEADERS = {
+    "accept": "*/*",
+    "content-type": "application/x-www-form-urlencoded",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "x-csrftoken": "iPbAaFWdMRvCPiYXomPIv6",
+    "x-ig-app-id": "936619743392459",
+    "Cookie": "ig_did=1F32F6CE-484A-495E-ABB2-05CDC1509B13; csrftoken=iPbAaFWdMRvCPiYXomPIv6; datr=mR9mas2v5S4QMF_zET_IgPyf; mid=amYfmQAEAAHbYsXQU6qp56BQUcyJ; ps_l=1; ps_n=1; ig_nrcb=1; wd=437x796"
+}
+
+
+PROFILE_DOC_ID = "27234427476213202"
+SHORTCODE_DOC_ID = "24368985919464652"
+
+
+def format_number(value):
+
+    if value is None:
+        return "—"
 
     if value >= 1_000_000:
-        return f"{value / 1_000_000:.1f}M".replace(".0", "")
+        return f"{value / 1_000_000:.1f}M"
 
     if value >= 1_000:
-        return f"{value / 1_000:.1f}K".replace(".0", "")
+        return f"{value / 1_000:.1f}K"
 
     return str(value)
+
+
+def extract_shortcode(url):
+
+    url = url.split("?")[0]
+
+    match = re.search(
+        r"instagram\.com/(?:[^/]+/)?(?:reels?|p)/([^/?]+)",
+        url
+    )
+
+    if not match:
+        raise Exception("Invalid instagram url")
+
+    return match.group(1)
+
+
+def create_shortcode_payload(shortcode):
+
+    variables = json.dumps({
+        "shortcode": shortcode
+    })
+
+    encoded = quote(variables)
+
+    return (
+        "av=0"
+        "&__d=www"
+        "&__user=0"
+        "&__a=1"
+        "&__req=u"
+        "&dpr=1"
+        "&fb_api_caller_class=RelayModern"
+        "&fb_api_req_friendly_name=PolarisPostRootQuery"
+        "&server_timestamps=true"
+        f"&variables={encoded}"
+        f"&doc_id={SHORTCODE_DOC_ID}"
+    )
+
+
+def get_shortcode_info(shortcode):
+
+    payload = create_shortcode_payload(shortcode)
+
+    response = requests.post(
+        GRAPHQL_URL,
+        headers=HEADERS,
+        data=payload,
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+    return response.json()
+
+
+def get_profile_reels(user_id):
+
+    payload = {
+        "fb_api_req_friendly_name":
+        "PolarisProfileReelsTabContentQuery",
+
+        "doc_id": PROFILE_DOC_ID,
+
+        "variables": json.dumps({
+            "data": {
+                "include_feed_video": True,
+                "page_size": 100,
+                "target_user_id": str(user_id)
+            }
+        })
+    }
+
+    response = requests.post(
+        GRAPHQL_URL,
+        headers=HEADERS,
+        data=payload,
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+    return response.json()
+
+def find_media_by_shortcode(edges, shortcode):
+
+    for edge in edges:
+
+        media = edge["node"]["media"]
+
+        if media["code"] == shortcode:
+            return media
+
+    return None
 
 
 def calculate_er(views, likes, comments):
@@ -22,131 +137,74 @@ def calculate_er(views, likes, comments):
     return round((likes + comments) / views * 100, 2)
 
 
-def _fetch_instagram_stats(url: str):
+async def get_instagram_stats(url):
 
-    command = [
-        "yt-dlp",
-        "--print-json",
-        "--no-warnings",
-        "--no-playlist",
-        url,
-    ]
+    shortcode = extract_shortcode(url)
 
-    try:
+    #
+    # Первый GraphQL
+    #
 
-        result = subprocess.run(
-            command,
-            capture_output=True,
-            text=True,
-            timeout=20,
-            check=True,
-        )
+    reel = get_shortcode_info(shortcode)
 
-    except FileNotFoundError:
-        raise Exception("На сервере не установлен yt-dlp.")
-
-    except subprocess.TimeoutExpired:
-        raise Exception("Instagram слишком долго отвечает.")
-
-    except subprocess.CalledProcessError as e:
-
-        error = (e.stderr or e.stdout or "").lower()
-
-        if "login required" in error or "you need to log in" in error:
-            raise Exception(
-                "Instagram запросил авторизацию для этого поста."
-            )
-
-        if "private" in error:
-            raise Exception(
-                "Пост является приватным."
-            )
-
-        if "not available" in error or "unavailable" in error:
-            raise Exception(
-                "Пост недоступен."
-            )
-
-        raise Exception(
-            "Не удалось получить данные Instagram."
-        )
-
-    if not result.stdout.strip():
-        raise Exception("Instagram не вернул данные.")
-
-    try:
-        data = json.loads(result.stdout)
-
-    except json.JSONDecodeError:
-        raise Exception("Некорректный ответ Instagram.")
-
-    if not isinstance(data, dict):
-        raise Exception("Некорректный ответ Instagram.")
-
-    views = int(
-        data.get("view_count")
-        or data.get("play_count")
-        or 0
+    item = (
+        reel["data"]
+        ["xdt_api__v1__media__shortcode__web_info"]
+        ["items"][0]
     )
 
-    likes = int(data.get("like_count") or 0)
-    comments = int(data.get("comment_count") or 0)
+    owner = item["user"]
 
-    er = calculate_er(views, likes, comments)
+    owner_id = owner["pk"]
 
-    channel = (
-        data.get("uploader")
-        or data.get("channel")
-        or data.get("uploader_id")
-        or ""
+    username = owner["username"]
+
+    caption = ""
+
+    if item.get("caption"):
+        caption = item["caption"].get("text", "")
+
+    likes = item.get("like_count", 0)
+
+    comments = item.get("comment_count", 0)
+
+    #
+    # Второй GraphQL
+    #
+
+    profile = get_profile_reels(owner_id)
+
+    edges = (
+        profile["data"]
+        ["xdt_api__v1__clips__user__connection_v2"]
+        ["edges"]
     )
 
-    title = (
-        data.get("description")
-        or data.get("title")
-        or ""
-    )
+    media = find_media_by_shortcode(edges, shortcode)
+
+    if not media:
+        raise Exception("Reel not found in profile")
+
+    views = media.get("play_count", 0)
 
     return {
-
         "platform": "Instagram",
-
-        "channel": channel,
-
-        "title": title[:120] if title else "Instagram Reel",
-
+        "channel": username,
+        "title": caption[:120] if caption else "Instagram Reel",
         "views": views,
-
-        "reactions": _format_number(likes),
-
-        "comments": _format_number(comments),
-
+        "reactions": format_number(likes),
+        "comments": format_number(comments),
         "shares": "—",
+        "er": calculate_er(views, likes, comments),
+        "url": url,
 
-        "er": er,
-
-        "url": data.get("webpage_url") or url,
+        #
+        # пригодится потом
+        #
 
         "views_raw": views,
-
         "likes_raw": likes,
-
         "comments_raw": comments,
-
-        "shortcode": data.get("id"),
+        "owner_id": owner_id,
+        "shortcode": shortcode,
     }
-
-
-async def get_instagram_stats(url: str):
-    return await asyncio.to_thread(_fetch_instagram_stats, url)
-
-
-if __name__ == "__main__":
-
-    print(
-        asyncio.run(
-            get_instagram_stats(
-                "https://www.instagram.com/reels/DavNwBcg1To/"
-            )
-        )
-    )
