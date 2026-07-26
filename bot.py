@@ -689,13 +689,39 @@ async def apply_cbudget(bot, chat_id, message_id, entry, cbudgets):
     )
 
 
+def merge_update_urls(old_urls, new_urls):
+    """
+    Объединяет старый список ссылок с тем, что прислали в /update.
+
+    Если прислали весь список целиком (старые ссылки идут первыми,
+    в том же порядке) — используем его как есть, позиции сохранены.
+    Если прислали только новые ссылки — добавляем их в конец,
+    старые позиции тоже не трогаем.
+    В обоих случаях /cbudget можно не сбрасывать.
+
+    Возвращает (объединенный список, сохранились ли позиции старых ссылок).
+    """
+
+    if new_urls[:len(old_urls)] == old_urls:
+        return new_urls, True
+
+    if not any(url in old_urls for url in new_urls):
+        return old_urls + new_urls, True
+
+    merged = old_urls + [url for url in new_urls if url not in old_urls]
+    return merged, False
+
+
 async def apply_update(bot, chat_id, message_id, entry, new_urls):
     """
-    Пересчитывает пост с новым списком ссылок (в порядке new_urls).
-    Старые ссылки берут дельту из прежних снэпшотов, новые считаются
-    с нуля. Если количество ссылок изменилось, /cbudget сбрасывается,
-    потому что бюджеты по позициям могут не совпасть с новым списком.
+    Пересчитывает пост с новым списком ссылок. Старые ссылки берут
+    дельту из прежних снэпшотов, новые считаются с нуля. /cbudget
+    сбрасывается только если позиции старых ссылок могли съехать
+    (см. merge_update_urls).
     """
+
+    old_urls = entry["urls"]
+    merged_urls, positions_preserved = merge_update_urls(old_urls, new_urls)
 
     title = entry.get("title")
     budget = entry.get("budget")
@@ -703,12 +729,12 @@ async def apply_update(bot, chat_id, message_id, entry, new_urls):
 
     cbudgets_reset = False
 
-    if cbudgets and len(cbudgets) != len(new_urls):
+    if cbudgets and not positions_preserved:
         cbudgets = None
         cbudgets_reset = True
 
     message, total_views, new_snapshots = await build_message(
-        new_urls,
+        merged_urls,
         entry["snapshots"],
         has_title=bool(title),
         budget=budget,
@@ -720,7 +746,7 @@ async def apply_update(bot, chat_id, message_id, entry, new_urls):
 
     await save_message_data(
         message_id,
-        new_urls,
+        merged_urls,
         new_snapshots,
         title=title,
         base_text=message,
@@ -1005,15 +1031,26 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
 
     elif len(results) > 1:
         message += (
-            "\n\n📊 Хочешь посчитать CPV? Ответь на это сообщение "
-            "командой <code>/budget</code>"
+            "\n\n📊 Посчитать CPV можно ответом на это сообщение: "
+            "<code>/budget</code> + тотал кост — один бюджет на всё, "
+            "<code>/cbudget</code> — бюджет по каждой ссылке отдельно "
+            "(кидай суммы в том же порядке, что и ссылки)"
         )
 
     if len(results) > 1 and not has_title:
         message += (
-            "\n\n📝 Хочешь добавить название проекта? "
-            "Ответь на это сообщение командой <code>/title</code> — "
-            "можно сразу с ссылкой на отчет, и название станет гиперссылкой."
+            "\n\n📝 Добавь название проекта ответом на это сообщение "
+            "с командой «<code>/title</code> + Название проекта». "
+            "Совет: закинь в то же сообщение линк на отчёт, и тогда "
+            "название станет гиперссылкой"
+        )
+
+    if len(results) > 1:
+        message += (
+            "\n\n🔄 Вышли ещё не все размещения? Когда появятся остальные — "
+            "ответь на это сообщение командой <code>/update</code> и пришли "
+            "весь актуальный список ссылок: старые пересчитаются, новые "
+            "добавятся на свои места"
         )
 
     return message, total_views, new_snapshots
