@@ -973,7 +973,10 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
                 item_cpv = cbudget / int(stats["views_raw"])
                 cbudget_total += cbudget
 
-                item_text += f"\n💰 CPV: {item_cpv:.2f} ₽"
+                item_text += (
+                    f"\n💰 <b>Бюджет:</b> {format_money(cbudget)} ₽, "
+                    f"📈 <b>CPV:</b> {item_cpv:.2f} ₽"
+                )
 
             results.append(item_text)
 
@@ -1025,7 +1028,7 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
 
         message += (
             "\n\n"
-            f"💰 <b>Бюджет:</b> {format_money(budget)} ₽\n"
+            f"💰 <b>Общий бюджет:</b> {format_money(budget)} ₽\n"
             f"📈 <b>CPV:</b> {cpv:.2f} ₽{fmt_float_delta(cpv_delta)}"
         )
 
@@ -1033,24 +1036,16 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
         message += (
             "\n\n📊 Посчитать CPV можно ответом на это сообщение: "
             "<code>/budget</code> + тотал кост — один бюджет на всё, "
-            "<code>/cbudget</code> — бюджет по каждой ссылке отдельно "
+            "<code>/cbudget</code> — бюджет по каждой публикации отдельно "
             "(кидай суммы в том же порядке, что и ссылки)"
         )
 
     if len(results) > 1 and not has_title:
         message += (
             "\n\n📝 Добавь название проекта ответом на это сообщение "
-            "с командой «<code>/title</code> + Название проекта». "
-            "Совет: закинь в то же сообщение линк на отчёт, и тогда "
-            "название станет гиперссылкой"
-        )
-
-    if len(results) > 1:
-        message += (
-            "\n\n🔄 Вышли ещё не все размещения? Когда появятся остальные — "
-            "ответь на это сообщение командой <code>/update</code> и пришли "
-            "весь актуальный список ссылок: старые пересчитаются, новые "
-            "добавятся на свои места"
+            "с командой <code>/title</code> + Название проекта. "
+            "<i>Совет: закинь в то же сообщение линк на отчёт, и тогда "
+            "название станет гиперссылкой</i>"
         )
 
     return message, total_views, new_snapshots
