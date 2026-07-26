@@ -43,6 +43,7 @@ from tiktok_api import (
 load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_USERNAME = "oreogod"
 last_total_reach = {}
 
 # user_id -> {"chat_id":, "message_id":}
@@ -90,6 +91,32 @@ async def load_message_data(message_id):
     return json.loads(raw)
 
 
+async def track_user(user_id):
+    """Отмечает юзера как уникального пользователя бота. Не должно ронять бота."""
+
+    try:
+        await redis.sadd("stats:users", str(user_id))
+    except Exception:
+        traceback.print_exc()
+
+
+async def track_check(platform):
+    """Считает количество проверенных ссылок, суммарно и по платформам."""
+
+    try:
+        await redis.incr("stats:checks:total")
+        await redis.incr(f"stats:checks:{platform}")
+    except Exception:
+        traceback.print_exc()
+
+
+async def get_counter(key):
+
+    value = await redis.get(key)
+
+    return int(value) if value else 0
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Привет!\n\n"
@@ -123,6 +150,41 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         "Напиши название проекта/посева следующим сообщением 👇"
+    )
+
+
+async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    username = (update.effective_user.username or "").lower()
+
+    if username != ADMIN_USERNAME.lower():
+        return
+
+    users_count = await redis.scard("stats:users")
+    total_checks = await get_counter("stats:checks:total")
+
+    lines = [
+        f"👤 Уникальных юзеров: <b>{users_count}</b>",
+        f"🔍 Всего проверок ссылок: <b>{total_checks}</b>",
+        "",
+    ]
+
+    platform_labels = {
+        "telegram": ("🔵", "Telegram"),
+        "youtube": ("🔴", "YouTube"),
+        "instagram": ("🟣", "Instagram"),
+        "tiktok": ("⚫", "TikTok"),
+    }
+
+    for platform, (emoji, label) in platform_labels.items():
+
+        count = await get_counter(f"stats:checks:{platform}")
+
+        lines.append(f"{emoji} {label}: <b>{count}</b>")
+
+    await update.message.reply_text(
+        "\n".join(lines),
+        parse_mode="HTML",
     )
 
 
@@ -299,6 +361,8 @@ async def build_message(urls, previous_snapshots=None, has_title=False):
             else:
                 continue
 
+            await track_check(platform)
+
             apply_deltas(stats, previous_snapshots.get(url))
             new_snapshots[url] = snapshot_stats(stats)
 
@@ -451,6 +515,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
+    await track_user(user_id)
+
     message, total_views, snapshots = await build_message(urls)
 
     if message is None:
@@ -547,6 +613,7 @@ app = (
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("title", cmd_title))
+app.add_handler(CommandHandler("stats", cmd_stats))
 
 app.add_handler(
     MessageHandler(
