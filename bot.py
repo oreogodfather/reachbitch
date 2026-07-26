@@ -1,6 +1,11 @@
-from telegram import Update
+from telegram import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Update,
+)
 from telegram.ext import (
     ApplicationBuilder,
+    CallbackQueryHandler,
     CommandHandler,
     ContextTypes,
     MessageHandler,
@@ -36,6 +41,7 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 last_total_reach = {}
+message_urls = {}  # message_id -> list[str], для кнопки "Обновить"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -90,7 +96,7 @@ def format_stats(stats: dict):
             f"💬 <b>{stats['comments']}</b>\n"
             f"📈 <b>{stats['er']}%</b>"
         )
-    
+
     if stats["platform"] == "Instagram":
 
         return (
@@ -115,6 +121,89 @@ def format_stats(stats: dict):
         )
 
     return "Неизвестная платформа"
+
+
+async def build_message(urls):
+    """Считает статистику по списку ссылок и собирает готовый текст."""
+
+    results = []
+    total_views = 0
+    views_for_copy = []
+
+    for url in urls:
+
+        platform = detect_platform(url)
+
+        if platform is None:
+            continue
+
+        try:
+
+            if platform == "telegram":
+                stats = await get_telegram_stats(url)
+
+            elif platform == "youtube":
+                stats = await get_youtube_stats(url)
+
+            elif platform == "instagram":
+                stats = await get_instagram_stats(url)
+
+            elif platform == "tiktok":
+                stats = await asyncio.to_thread(
+                    get_tiktok_stats,
+                    url,
+                )
+
+            else:
+                continue
+
+            if "views_raw" in stats:
+                total_views += int(stats["views_raw"])
+                views_for_copy.append(str(stats["views"]))
+
+            results.append(
+                format_stats(stats)
+            )
+
+        except Exception as e:
+
+            print("\n" + "=" * 80)
+            print(f"Ошибка при обработке ссылки:\n{url}\n")
+            traceback.print_exc()
+            print("=" * 80 + "\n")
+
+            results.append(
+                f"❌ {e}\n{url}"
+            )
+
+            views_for_copy.append("N/A")
+
+    if not results:
+        return None, 0
+
+    message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
+
+    if len(results) > 1:
+
+        message += (
+            "\n\n━━━━━━━━━━━━━━\n\n"
+            f"📊 <b>Общий охват</b>\n\n"
+            f"👀 <code>{total_views}</code>\n\n"
+
+            "📋 <b>Охваты для таблицы</b>\n\n"
+            "<pre>"
+            + "\n".join(views_for_copy)
+            + "</pre>\n\n"
+
+            "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+        )
+
+    return message, total_views
+
+
+REFRESH_KEYBOARD = InlineKeyboardMarkup([[
+    InlineKeyboardButton("🔄 Обновить", callback_data="refresh")
+]])
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -163,57 +252,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
-    results = []
-    total_views = 0
-    views_for_copy = []
+    message, total_views = await build_message(urls)
 
-    for url in urls:
-
-        platform = detect_platform(url)
-
-        if platform is None:
-            continue
-
-        try:
-
-            if platform == "telegram":
-                stats = await get_telegram_stats(url)
-
-            elif platform == "youtube":
-                stats = await get_youtube_stats(url)
-                
-            elif platform == "instagram":
-                stats = await get_instagram_stats(url)
-
-            elif platform == "tiktok":
-                stats = await asyncio.to_thread(
-                    get_tiktok_stats,
-                    url,
-                )    
-
-            else:
-                continue
-            if "views_raw" in stats:
-                total_views += int(stats["views_raw"])
-                views_for_copy.append(str(stats["views"]))
-            results.append(
-                format_stats(stats)
-            )
-
-        except Exception as e:
-
-            print("\n" + "=" * 80)
-            print(f"Ошибка при обработке ссылки:\n{url}\n")
-            traceback.print_exc()
-            print("=" * 80 + "\n")
-
-            results.append(
-                f"❌ {e}\n{url}"
-        )
-
-            views_for_copy.append("N/A")
-
-    if not results:
+    if message is None:
 
         await update.message.reply_text(
             "Не нашел поддерживаемых ссылок."
@@ -221,30 +262,53 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
-    message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
-
-    if len(results) > 1:
-
+    if total_views:
         last_total_reach[user_id] = total_views
 
-        message += (
-        "\n\n━━━━━━━━━━━━━━\n\n"
-        f"📊 <b>Общий охват</b>\n\n"
-        f"👀 <code>{total_views}</code>\n\n"
-
-        "📋 <b>Охваты для таблицы</b>\n\n"
-        "<pre>"
-        + "\n".join(views_for_copy)
-        + "</pre>\n\n"
-
-        "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
-        )
-
-    await update.message.reply_text(
+    sent = await update.message.reply_text(
         message,
         parse_mode="HTML",
-        disable_web_page_preview=True
-)
+        disable_web_page_preview=True,
+        reply_markup=REFRESH_KEYBOARD,
+    )
+
+    message_urls[sent.message_id] = urls
+
+
+async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    query = update.callback_query
+    message_id = query.message.message_id
+
+    urls = message_urls.get(message_id)
+
+    if not urls:
+        await query.answer("Ссылки устарели, пришли заново 😔", show_alert=True)
+        return
+
+    await query.answer("Обновляю…")
+
+    message, total_views = await build_message(urls)
+
+    if message is None:
+        return
+
+    user_id = update.effective_user.id
+
+    if total_views:
+        last_total_reach[user_id] = total_views
+
+    try:
+        await query.edit_message_text(
+            message,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=REFRESH_KEYBOARD,
+        )
+    except Exception as e:
+        # Telegram кидает ошибку, если текст не поменялся
+        if "message is not modified" not in str(e):
+            raise
 
 
 async def post_init(app):
@@ -273,6 +337,8 @@ app.add_handler(
         handle_message,
     )
 )
+
+app.add_handler(CallbackQueryHandler(handle_refresh, pattern="^refresh$"))
 
 print("🚀 REACHBITCH запущен")
 
