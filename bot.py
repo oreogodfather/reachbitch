@@ -745,9 +745,16 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
     return message, total_views, new_snapshots
 
 
-REFRESH_KEYBOARD = InlineKeyboardMarkup([[
-    InlineKeyboardButton("🔄 Обновить", callback_data="refresh")
-]])
+def build_refresh_keyboard(updated_at=None):
+
+    label = f"🔄 Обновлено в {updated_at}" if updated_at else "🔄 Обновить"
+
+    return InlineKeyboardMarkup([[
+        InlineKeyboardButton(label, callback_data="refresh")
+    ]])
+
+
+REFRESH_KEYBOARD = build_refresh_keyboard()
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -906,14 +913,13 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
         message = f"{title}\n\n" + message
 
     updated_at = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%H:%M")
-    message += f"\n\n🕐 Обновлено в {updated_at}"
 
     try:
         await query.edit_message_text(
             message,
             parse_mode="HTML",
             disable_web_page_preview=True,
-            reply_markup=REFRESH_KEYBOARD,
+            reply_markup=build_refresh_keyboard(updated_at),
         )
     except Exception as e:
         # Telegram кидает ошибку, если текст не поменялся

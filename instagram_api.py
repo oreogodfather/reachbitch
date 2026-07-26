@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import requests
 from urllib.parse import quote
@@ -7,13 +8,22 @@ from urllib.parse import quote
 GRAPHQL_URL = "https://www.instagram.com/graphql/query"
 
 
+INSTAGRAM_COOKIE = os.getenv("INSTAGRAM_COOKIE")
+INSTAGRAM_CSRFTOKEN = os.getenv("INSTAGRAM_CSRFTOKEN")
+
+if not INSTAGRAM_COOKIE or not INSTAGRAM_CSRFTOKEN:
+    raise Exception(
+        "Не заданы INSTAGRAM_COOKIE / INSTAGRAM_CSRFTOKEN в переменных окружения."
+    )
+
+
 HEADERS = {
     "accept": "*/*",
     "content-type": "application/x-www-form-urlencoded",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-    "x-csrftoken": "w54s5iKAK8x5SNp4NNBgXp",
+    "x-csrftoken": INSTAGRAM_CSRFTOKEN,
     "x-ig-app-id": "936619743392459",
-    "Cookie": "csrftoken=w54s5iKAK8x5SNp4NNBgXp; datr=uyxmai8WWnNscemSdhMU2f36; ig_did=763AE9AD-1660-4A3C-9006-EFD215078455; mid=amYsvQAEAAGskhflbFNWz_-ZU4Mh; wd=878x868"
+    "Cookie": INSTAGRAM_COOKIE,
 }
 
 
