@@ -233,9 +233,9 @@ async def cmd_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Бюджет сразу аргументом: /budget 100000
     if context.args:
 
-        raw_budget = re.sub(r"[^\d]", "", " ".join(context.args))
+        budget = parse_budget(" ".join(context.args))
 
-        if not raw_budget:
+        if budget is None:
             await reply_and_log(
                 update,
                 "Не понял бюджет, пришли просто число в рублях."
@@ -247,10 +247,10 @@ async def cmd_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
             replied.chat_id,
             replied.message_id,
             entry,
-            int(raw_budget),
+            budget,
         )
 
-        await reply_and_log(update, f"Готово, посчитал CPV на бюджет {int(raw_budget):,} ₽ ✅")
+        await reply_and_log(update, f"Готово, посчитал CPV на бюджет {format_money(budget)} ₽ ✅")
         return
 
     pending_budget[update.effective_user.id] = {
@@ -335,6 +335,47 @@ async def cmd_clean(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def extract_urls(text: str):
     return re.findall(r"https?://[^\s]+", text)
+
+
+def parse_budget(text: str):
+    """
+    Разбирает бюджет из текста, понимая копейки и разделители тысяч.
+    "1 637 776,80" -> 1637776.8. Возвращает None, если разобрать не вышло.
+    """
+
+    cleaned = re.sub(r"[^\d.,]", "", text)
+
+    if not cleaned:
+        return None
+
+    if "," in cleaned and "." in cleaned:
+
+        if cleaned.rfind(",") > cleaned.rfind("."):
+            cleaned = cleaned.replace(".", "").replace(",", ".")
+        else:
+            cleaned = cleaned.replace(",", "")
+
+    elif "," in cleaned:
+
+        whole, _, fraction = cleaned.rpartition(",")
+
+        if whole and len(fraction) <= 2:
+            cleaned = f"{whole}.{fraction}"
+        else:
+            cleaned = cleaned.replace(",", "")
+
+    try:
+        return float(cleaned)
+    except ValueError:
+        return None
+
+
+def format_money(value: float) -> str:
+
+    if value == int(value):
+        return f"{int(value):,}"
+
+    return f"{value:,.2f}"
 
 
 def is_bare_url_message(text: str) -> bool:
@@ -677,7 +718,7 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
 
             message += (
                 "\n\n"
-                f"💰 <b>Бюджет:</b> {budget:,} ₽\n"
+                f"💰 <b>Бюджет:</b> {format_money(budget)} ₽\n"
                 f"📈 <b>CPV:</b> {cpv:.4f} ₽{fmt_float_delta(cpv_delta)}"
             )
 
@@ -756,9 +797,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             pending = pending_budget.pop(user_id)
 
-            raw_budget = re.sub(r"[^\d]", "", text)
+            budget = parse_budget(text)
 
-            if not raw_budget:
+            if budget is None:
                 await reply_and_log(
                     update,
                     "Не понял бюджет, пришли просто число в рублях."
@@ -779,10 +820,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 pending["chat_id"],
                 pending["message_id"],
                 entry,
-                int(raw_budget),
+                budget,
             )
 
-            await reply_and_log(update, f"Готово, посчитал CPV на бюджет {int(raw_budget):,} ₽ ✅")
+            await reply_and_log(update, f"Готово, посчитал CPV на бюджет {format_money(budget)} ₽ ✅")
 
             return
 
