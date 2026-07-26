@@ -629,7 +629,10 @@ def parse_budget_list(text, expected_count):
 
     lines = [line.strip() for line in text.splitlines() if line.strip()]
 
-    if len(lines) == expected_count:
+    if len(lines) > 1:
+        # Много строк — это вставка из таблицы, каждая строка это один
+        # бюджет. Никогда не делим такую вставку по запятой, иначе
+        # разъедет числа с десятичной запятой на границе строк.
         parts = lines
     elif "," in text:
         parts = [p.strip() for p in text.split(",") if p.strip()]
@@ -974,8 +977,8 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
                 cbudget_total += cbudget
 
                 item_text += (
-                    f"\n💰 <b>Бюджет:</b> {format_money(cbudget)} ₽, "
-                    f"📈 <b>CPV:</b> {item_cpv:.2f} ₽"
+                    f"\n💰 {format_money(cbudget)} ₽, "
+                    f"<b>CPV:</b> {item_cpv:.2f} ₽"
                 )
 
             results.append(item_text)
