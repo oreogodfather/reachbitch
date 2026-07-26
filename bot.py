@@ -233,6 +233,7 @@ async def build_message(urls, previous_snapshots=None):
 
     results = []
     total_views = 0
+    total_views_delta = 0
     views_for_copy = []
     new_snapshots = {}
 
@@ -270,6 +271,9 @@ async def build_message(urls, previous_snapshots=None):
                 total_views += int(stats["views_raw"])
                 views_for_copy.append(str(stats["views"]))
 
+                if stats.get("views_delta") is not None:
+                    total_views_delta += stats["views_delta"]
+
             results.append(
                 format_stats(stats)
             )
@@ -297,7 +301,7 @@ async def build_message(urls, previous_snapshots=None):
         message += (
             "\n\n━━━━━━━━━━━━━━\n\n"
             f"📊 <b>Общий охват</b>\n\n"
-            f"👀 <code>{total_views}</code>\n\n"
+            f"👀 <code>{total_views}</code>{fmt_delta(total_views_delta)}\n\n"
 
             "📋 <b>Охваты для таблицы</b>\n\n"
             "<pre>"
