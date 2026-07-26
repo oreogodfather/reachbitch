@@ -45,7 +45,7 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 last_total_reach = {}
 
-# user_id -> {"chat_id":, "message_id":, "base_text_html":, "reply_markup":}
+# user_id -> {"chat_id":, "message_id":}
 pending_title = {}
 
 redis = Redis(
@@ -64,12 +64,13 @@ RAW_FIELDS = {
 }
 
 
-async def save_message_data(message_id, urls, snapshots, title=None):
+async def save_message_data(message_id, urls, snapshots, title=None, base_text=None):
 
     payload = json.dumps({
         "urls": urls,
         "snapshots": snapshots,
         "title": title,
+        "base_text": base_text,
     })
 
     await redis.set(
@@ -118,8 +119,6 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
     pending_title[update.effective_user.id] = {
         "chat_id": replied.chat_id,
         "message_id": replied.message_id,
-        "base_text_html": replied.text_html,
-        "reply_markup": replied.reply_markup,
     }
 
     await update.message.reply_text(
@@ -344,13 +343,13 @@ async def build_message(urls, previous_snapshots=None, has_title=False):
             + "\n".join(views_for_copy)
             + "</pre>\n\n"
 
-            "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+            "💡 Пришли следующим сообщением бюджет в ₽ — посчитаю общий CPV."
         )
 
         if not has_title:
             message += (
-                "\n\n📝 Хотите добавить название проекта? "
-                "Ответьте на это сообщение командой <code>/title</code>"
+                "\n\n📝 Хочешь добавить название проекта? "
+                "Ответь на это сообщение командой <code>/title</code>"
             )
 
     return message, total_views, new_snapshots
@@ -377,12 +376,18 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             pending = pending_title.pop(user_id)
 
-            title = text.strip()
+            entry = await load_message_data(pending["message_id"])
 
-            titled_text = (
-                f"<b>{html.escape(title)}</b>\n\n"
-                + pending["base_text_html"]
-            )
+            if not entry:
+                await update.message.reply_text(
+                    "Не нашел данные по этому сообщению — оно устарело."
+                )
+                return
+
+            title = text.strip()
+            base_text = entry.get("base_text", "")
+
+            titled_text = f"<b>{html.escape(title)}</b>\n\n{base_text}"
 
             await context.bot.edit_message_text(
                 chat_id=pending["chat_id"],
@@ -390,18 +395,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text=titled_text,
                 parse_mode="HTML",
                 disable_web_page_preview=True,
-                reply_markup=pending["reply_markup"],
+                reply_markup=REFRESH_KEYBOARD,
             )
 
-            entry = await load_message_data(pending["message_id"])
-
-            if entry:
-                await save_message_data(
-                    pending["message_id"],
-                    entry["urls"],
-                    entry["snapshots"],
-                    title=title,
-                )
+            await save_message_data(
+                pending["message_id"],
+                entry["urls"],
+                entry["snapshots"],
+                title=title,
+                base_text=base_text,
+            )
 
             await update.message.reply_text(f"Готово, назвал: «{title}» ✅")
 
@@ -468,7 +471,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=REFRESH_KEYBOARD,
     )
 
-    await save_message_data(sent.message_id, urls, snapshots)
+    await save_message_data(sent.message_id, urls, snapshots, base_text=message)
 
 
 async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -500,7 +503,13 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if total_views:
         last_total_reach[user_id] = total_views
 
-    await save_message_data(message_id, entry["urls"], new_snapshots, title=title)
+    await save_message_data(
+        message_id,
+        entry["urls"],
+        new_snapshots,
+        title=title,
+        base_text=message,
+    )
 
     if title:
         message = f"<b>{html.escape(title)}</b>\n\n" + message
