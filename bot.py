@@ -1060,7 +1060,17 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
 
 def build_refresh_keyboard(updated_at=None):
 
-    label = f"🔄 Обновлено в {updated_at}" if updated_at else "🔄 Обновить"
+    if updated_at:
+
+        now = datetime.now(ZoneInfo("Europe/Moscow"))
+
+        if updated_at.date() == now.date():
+            label = f"🔄 Обновлено в {updated_at.strftime('%H:%M')}"
+        else:
+            label = f"🔄 Обновлено {updated_at.strftime('%d.%m в %H:%M')}"
+
+    else:
+        label = "🔄 Обновить"
 
     return InlineKeyboardMarkup([[
         InlineKeyboardButton(label, callback_data="refresh")
@@ -1310,7 +1320,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if title:
         message = f"{title}\n\n" + message
 
-    updated_at = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%H:%M")
+    updated_at = datetime.now(ZoneInfo("Europe/Moscow"))
 
     try:
         await query.edit_message_text(
