@@ -44,10 +44,12 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_USERNAME = "oreogod"
-last_total_reach = {}
 
 # user_id -> {"chat_id":, "message_id":}
 pending_title = {}
+
+# user_id -> {"chat_id":, "message_id":}
+pending_budget = {}
 
 redis = Redis(
     url=os.getenv("UPSTASH_REDIS_REST_URL"),
@@ -65,13 +67,14 @@ RAW_FIELDS = {
 }
 
 
-async def save_message_data(message_id, urls, snapshots, title=None, base_text=None):
+async def save_message_data(message_id, urls, snapshots, title=None, base_text=None, budget=None):
 
     payload = json.dumps({
         "urls": urls,
         "snapshots": snapshots,
         "title": title,
         "base_text": base_text,
+        "budget": budget,
     })
 
     await redis.set(
@@ -201,6 +204,63 @@ async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "тогда название станет гиперссылкой. Например: "
         "<code>Название проекта https://docs.google.com/...</code>",
         parse_mode="HTML",
+    )
+
+
+async def cmd_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    await log_message(update.effective_chat.id, update.message.message_id)
+
+    replied = update.message.reply_to_message
+
+    if not replied or replied.from_user.id != context.bot.id:
+        await reply_and_log(
+            update,
+            "Ответь этой командой на сообщение со статистикой, "
+            "для которого хочешь посчитать CPV."
+        )
+        return
+
+    entry = await load_message_data(replied.message_id)
+
+    if not entry:
+        await reply_and_log(
+            update,
+            "Не нашел данные по этому сообщению — оно устарело."
+        )
+        return
+
+    # Бюджет сразу аргументом: /budget 100000
+    if context.args:
+
+        raw_budget = re.sub(r"[^\d]", "", " ".join(context.args))
+
+        if not raw_budget:
+            await reply_and_log(
+                update,
+                "Не понял бюджет, пришли просто число в рублях."
+            )
+            return
+
+        await apply_budget(
+            context.bot,
+            replied.chat_id,
+            replied.message_id,
+            entry,
+            int(raw_budget),
+        )
+
+        await reply_and_log(update, f"Готово, посчитал CPV на бюджет {int(raw_budget):,} ₽ ✅")
+        return
+
+    pending_budget[update.effective_user.id] = {
+        "chat_id": replied.chat_id,
+        "message_id": replied.message_id,
+    }
+
+    await reply_and_log(
+        update,
+        "Пришли бюджет в рублях следующим сообщением 👇"
     )
 
 
@@ -337,6 +397,43 @@ async def apply_title(bot, chat_id, message_id, entry, raw_title):
         entry["snapshots"],
         title=title_html,
         base_text=base_text,
+        budget=entry.get("budget"),
+    )
+
+
+async def apply_budget(bot, chat_id, message_id, entry, budget):
+
+    title = entry.get("title")
+
+    message, total_views, new_snapshots = await build_message(
+        entry["urls"],
+        entry["snapshots"],
+        has_title=bool(title),
+        budget=budget,
+    )
+
+    if message is None:
+        return
+
+    await save_message_data(
+        message_id,
+        entry["urls"],
+        new_snapshots,
+        title=title,
+        base_text=message,
+        budget=budget,
+    )
+
+    if title:
+        message = f"{title}\n\n" + message
+
+    await bot.edit_message_text(
+        chat_id=chat_id,
+        message_id=message_id,
+        text=message,
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+        reply_markup=REFRESH_KEYBOARD,
     )
 
 
@@ -394,6 +491,16 @@ def fmt_delta(delta):
     sign = "+" if delta > 0 else ""
 
     return f" ({sign}{delta:,})"
+
+
+def fmt_float_delta(delta):
+
+    if delta is None or abs(delta) < 0.0001:
+        return ""
+
+    sign = "+" if delta > 0 else ""
+
+    return f" ({sign}{delta:.4f})"
 
 
 def apply_deltas(stats, previous_snapshot):
@@ -468,7 +575,7 @@ def format_stats(stats: dict):
     return "Неизвестная платформа"
 
 
-async def build_message(urls, previous_snapshots=None, has_title=False):
+async def build_message(urls, previous_snapshots=None, has_title=False, budget=None):
     """
     Считает статистику по ссылкам, сравнивает с previous_snapshots (если есть)
     и возвращает (текст сообщения, суммарный охват, новые снэпшоты для сохранения).
@@ -553,10 +660,32 @@ async def build_message(urls, previous_snapshots=None, has_title=False):
             "📋 <b>Охваты для таблицы</b>\n\n"
             "<pre>"
             + "\n".join(views_for_copy)
-            + "</pre>\n\n"
-
-            "💡 Пришли следующим сообщением бюджет в ₽ — посчитаю общий CPV."
+            + "</pre>"
         )
+
+        if budget:
+
+            cpv = budget / total_views if total_views else 0
+
+            previous_total_views = total_views - total_views_delta
+
+            cpv_delta = None
+
+            if total_views_delta and previous_total_views > 0:
+                previous_cpv = budget / previous_total_views
+                cpv_delta = cpv - previous_cpv
+
+            message += (
+                "\n\n"
+                f"💰 <b>Бюджет:</b> {budget:,} ₽\n"
+                f"📈 <b>CPV:</b> {cpv:.4f} ₽{fmt_float_delta(cpv_delta)}"
+            )
+
+        else:
+            message += (
+                "\n\n📊 Хочешь посчитать CPV? Ответь на это сообщение "
+                "командой <code>/budget</code>"
+            )
 
         if not has_title:
             message += (
@@ -616,41 +745,47 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             return
 
-    # Пользователь прислал бюджет после подсчета общего охвата
-    if user_id in last_total_reach:
+    # Пользователь прислал бюджет после команды /budget
+    if user_id in pending_budget:
 
-        # Если пользователь прислал новую ссылку —
-        # начинаем новый расчет, а не считаем это бюджетом.
+        # Если прислали ссылку — это новый запрос статистики, отменяем ожидание.
         if extract_urls(text):
-            del last_total_reach[user_id]
+            del pending_budget[user_id]
 
         else:
 
-            budget = re.sub(r"[^\d]", "", text)
+            pending = pending_budget.pop(user_id)
 
-            if budget.isdigit():
+            raw_budget = re.sub(r"[^\d]", "", text)
 
-                budget = int(budget)
-
-                views = last_total_reach[user_id]
-
-                cpv = budget / views
-
+            if not raw_budget:
                 await reply_and_log(
-
                     update,
-
-                    f"💰 Бюджет: <b>{budget:,} ₽</b>\n"
-                    f"👀 Охват: <b>{views:,}</b>\n"
-                    f"📈 CPV: <b>{cpv:.4f} ₽</b>",
-
-                    parse_mode="HTML"
-
+                    "Не понял бюджет, пришли просто число в рублях."
                 )
-
-                del last_total_reach[user_id]
-
                 return
+
+            entry = await load_message_data(pending["message_id"])
+
+            if not entry:
+                await reply_and_log(
+                    update,
+                    "Не нашел данные по этому сообщению — оно устарело."
+                )
+                return
+
+            await apply_budget(
+                context.bot,
+                pending["chat_id"],
+                pending["message_id"],
+                entry,
+                int(raw_budget),
+            )
+
+            await reply_and_log(update, f"Готово, посчитал CPV на бюджет {int(raw_budget):,} ₽ ✅")
+
+            return
+
     if not urls:
 
         await reply_and_log(
@@ -672,9 +807,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
         return
-
-    if total_views:
-        last_total_reach[user_id] = total_views
 
     sent = await update.message.reply_text(
         message,
@@ -701,20 +833,17 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer("Обновляю…")
 
     title = entry.get("title")
+    budget = entry.get("budget")
 
     message, total_views, new_snapshots = await build_message(
         entry["urls"],
         entry["snapshots"],
         has_title=bool(title),
+        budget=budget,
     )
 
     if message is None:
         return
-
-    user_id = update.effective_user.id
-
-    if total_views:
-        last_total_reach[user_id] = total_views
 
     await save_message_data(
         message_id,
@@ -722,6 +851,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
         new_snapshots,
         title=title,
         base_text=message,
+        budget=budget,
     )
 
     if title:
@@ -760,6 +890,7 @@ app = (
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("title", cmd_title))
+app.add_handler(CommandHandler("budget", cmd_budget))
 app.add_handler(CommandHandler("stats", cmd_stats))
 app.add_handler(CommandHandler("clean", cmd_clean))
 
