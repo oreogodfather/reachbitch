@@ -19,6 +19,7 @@ from upstash_redis.asyncio import Redis
 import os
 import re
 import json
+import html
 import traceback
 import asyncio
 
@@ -44,6 +45,9 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 last_total_reach = {}
 
+# user_id -> {"chat_id":, "message_id":, "base_text_html":, "reply_markup":}
+pending_title = {}
+
 redis = Redis(
     url=os.getenv("UPSTASH_REDIS_REST_URL"),
     token=os.getenv("UPSTASH_REDIS_REST_TOKEN"),
@@ -60,11 +64,12 @@ RAW_FIELDS = {
 }
 
 
-async def save_message_data(message_id, urls, snapshots):
+async def save_message_data(message_id, urls, snapshots, title=None):
 
     payload = json.dumps({
         "urls": urls,
         "snapshots": snapshots,
+        "title": title,
     })
 
     await redis.set(
@@ -88,6 +93,37 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Привет!\n\n"
         "Пришли одну или несколько ссылок на Telegram или YouTube."
+    )
+
+
+async def cmd_title(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    replied = update.message.reply_to_message
+
+    if not replied or replied.from_user.id != context.bot.id:
+        await update.message.reply_text(
+            "Ответь этой командой на сообщение со статистикой, "
+            "которое хочешь назвать."
+        )
+        return
+
+    entry = await load_message_data(replied.message_id)
+
+    if not entry:
+        await update.message.reply_text(
+            "Не нашел данные по этому сообщению — оно устарело."
+        )
+        return
+
+    pending_title[update.effective_user.id] = {
+        "chat_id": replied.chat_id,
+        "message_id": replied.message_id,
+        "base_text_html": replied.text_html,
+        "reply_markup": replied.reply_markup,
+    }
+
+    await update.message.reply_text(
+        "Напиши название проекта/посева следующим сообщением 👇"
     )
 
 
@@ -223,7 +259,7 @@ def format_stats(stats: dict):
     return "Неизвестная платформа"
 
 
-async def build_message(urls, previous_snapshots=None):
+async def build_message(urls, previous_snapshots=None, has_title=False):
     """
     Считает статистику по ссылкам, сравнивает с previous_snapshots (если есть)
     и возвращает (текст сообщения, суммарный охват, новые снэпшоты для сохранения).
@@ -311,6 +347,12 @@ async def build_message(urls, previous_snapshots=None):
             "💡 Пришлите следующим сообщением бюджет в ₽ — посчитаю общий CPV."
         )
 
+        if not has_title:
+            message += (
+                "\n\n📝 Хотите добавить название проекта? "
+                "Ответьте на это сообщение командой <code>/title</code>"
+            )
+
     return message, total_views, new_snapshots
 
 
@@ -323,8 +365,49 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     text = update.message.text.strip()
     urls = extract_urls(update.message.text)
-    # Пользователь прислал бюджет после подсчета общего охвата
 
+    # Пользователь прислал название после команды /title
+    if user_id in pending_title:
+
+        # Если вместо названия прислали новую ссылку — отменяем ожидание.
+        if extract_urls(text):
+            del pending_title[user_id]
+
+        else:
+
+            pending = pending_title.pop(user_id)
+
+            title = text.strip()
+
+            titled_text = (
+                f"<b>{html.escape(title)}</b>\n\n"
+                + pending["base_text_html"]
+            )
+
+            await context.bot.edit_message_text(
+                chat_id=pending["chat_id"],
+                message_id=pending["message_id"],
+                text=titled_text,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+                reply_markup=pending["reply_markup"],
+            )
+
+            entry = await load_message_data(pending["message_id"])
+
+            if entry:
+                await save_message_data(
+                    pending["message_id"],
+                    entry["urls"],
+                    entry["snapshots"],
+                    title=title,
+                )
+
+            await update.message.reply_text(f"Готово, назвал: «{title}» ✅")
+
+            return
+
+    # Пользователь прислал бюджет после подсчета общего охвата
     if user_id in last_total_reach:
 
         # Если пользователь прислал новую ссылку —
@@ -401,9 +484,12 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await query.answer("Обновляю…")
 
+    title = entry.get("title")
+
     message, total_views, new_snapshots = await build_message(
         entry["urls"],
         entry["snapshots"],
+        has_title=bool(title),
     )
 
     if message is None:
@@ -414,7 +500,10 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if total_views:
         last_total_reach[user_id] = total_views
 
-    await save_message_data(message_id, entry["urls"], new_snapshots)
+    await save_message_data(message_id, entry["urls"], new_snapshots, title=title)
+
+    if title:
+        message = f"<b>{html.escape(title)}</b>\n\n" + message
 
     try:
         await query.edit_message_text(
@@ -448,6 +537,7 @@ app = (
 )
 
 app.add_handler(CommandHandler("start", start))
+app.add_handler(CommandHandler("title", cmd_title))
 
 app.add_handler(
     MessageHandler(
