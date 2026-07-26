@@ -54,6 +54,7 @@ pending_title = {}
 # user_id -> {"chat_id":, "message_id":}
 pending_budget = {}
 pending_cbudget = {}
+pending_update = {}
 
 redis = Redis(
     url=os.getenv("UPSTASH_REDIS_REST_URL"),
@@ -294,16 +295,22 @@ async def cmd_cbudget(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     expected = len(entry["urls"])
 
-    # Бюджеты сразу аргументом: /cbudget 50000, 30000, 20000
-    if context.args:
+    # Бюджеты сразу вместе с командой: /cbudget 50000, 30000, 20000
+    # (или каждый на своей строке — берем текст как есть, а не через
+    # context.args, потому что Telegram схлопывает переносы строк в args)
+    raw_text = update.message.text or ""
+    suffix = re.sub(r"^/cbudget(@\w+)?\s*", "", raw_text, count=1, flags=re.IGNORECASE).strip()
 
-        cbudgets = parse_budget_list(" ".join(context.args), expected)
+    if suffix:
+
+        cbudgets = parse_budget_list(suffix, expected)
 
         if cbudgets is None:
             await reply_and_log(
                 update,
-                f"Не понял бюджеты. Пришли {expected} чисел через запятую, "
-                "по одному на каждую ссылку, в том же порядке, в котором отправлял ссылки."
+                f"Не понял бюджеты. Пришли {expected} чисел, "
+                "по одному на каждую ссылку, в том же порядке, в котором отправлял ссылки "
+                "(каждый с новой строки или через запятую)."
             )
             return
 
@@ -328,6 +335,67 @@ async def cmd_cbudget(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update,
         f"Пришли {expected} бюджетов через запятую следующим сообщением, "
         "по одному на каждую ссылку в том же порядке 👇"
+    )
+
+
+async def cmd_update(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    await log_message(update.effective_chat.id, update.message.message_id)
+
+    replied = update.message.reply_to_message
+
+    if not replied or replied.from_user.id != context.bot.id:
+        await reply_and_log(
+            update,
+            "Ответь этой командой на сообщение со статистикой, "
+            "в котором хочешь обновить список ссылок."
+        )
+        return
+
+    entry = await load_message_data(replied.message_id)
+
+    if not entry:
+        await reply_and_log(
+            update,
+            "Не нашел данные по этому сообщению — оно устарело."
+        )
+        return
+
+    raw_text = update.message.text or ""
+    suffix = re.sub(r"^/update(@\w+)?\s*", "", raw_text, count=1, flags=re.IGNORECASE).strip()
+
+    new_urls = extract_urls(suffix)
+
+    if new_urls:
+
+        cbudgets_reset = await apply_update(
+            context.bot,
+            replied.chat_id,
+            replied.message_id,
+            entry,
+            new_urls,
+        )
+
+        reply = "Готово, обновил список ссылок ✅"
+
+        if cbudgets_reset:
+            reply += (
+                "\n\n⚠️ Количество ссылок изменилось, /cbudget сбросился — "
+                "выставь заново, если нужен."
+            )
+
+        await reply_and_log(update, reply)
+        return
+
+    pending_update[update.effective_user.id] = {
+        "chat_id": replied.chat_id,
+        "message_id": replied.message_id,
+    }
+
+    await reply_and_log(
+        update,
+        "Пришли актуальный список ссылок целиком следующим сообщением 👇\n\n"
+        "Старые просто пересчитаются, новые добавятся на свои места."
     )
 
 
@@ -553,11 +621,17 @@ async def apply_budget(bot, chat_id, message_id, entry, budget):
 def parse_budget_list(text, expected_count):
     """
     Разбирает список бюджетов по ссылкам, в том же порядке.
-    Разделитель — запятая, если она есть, иначе пробелы.
+    Если строк ровно столько же, сколько ссылок — каждая строка это
+    один бюджет (так вставляется столбик из таблицы). Иначе делим
+    по запятым, а если запятых нет — по пробелам.
     Возвращает None, если не удалось разобрать или количество не совпало.
     """
 
-    if "," in text:
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+
+    if len(lines) == expected_count:
+        parts = lines
+    elif "," in text:
         parts = [p.strip() for p in text.split(",") if p.strip()]
     else:
         parts = [p.strip() for p in text.split() if p.strip()]
@@ -613,6 +687,60 @@ async def apply_cbudget(bot, chat_id, message_id, entry, cbudgets):
         disable_web_page_preview=True,
         reply_markup=REFRESH_KEYBOARD,
     )
+
+
+async def apply_update(bot, chat_id, message_id, entry, new_urls):
+    """
+    Пересчитывает пост с новым списком ссылок (в порядке new_urls).
+    Старые ссылки берут дельту из прежних снэпшотов, новые считаются
+    с нуля. Если количество ссылок изменилось, /cbudget сбрасывается,
+    потому что бюджеты по позициям могут не совпасть с новым списком.
+    """
+
+    title = entry.get("title")
+    budget = entry.get("budget")
+    cbudgets = entry.get("cbudgets")
+
+    cbudgets_reset = False
+
+    if cbudgets and len(cbudgets) != len(new_urls):
+        cbudgets = None
+        cbudgets_reset = True
+
+    message, total_views, new_snapshots = await build_message(
+        new_urls,
+        entry["snapshots"],
+        has_title=bool(title),
+        budget=budget,
+        cbudgets=cbudgets,
+    )
+
+    if message is None:
+        return cbudgets_reset
+
+    await save_message_data(
+        message_id,
+        new_urls,
+        new_snapshots,
+        title=title,
+        base_text=message,
+        budget=budget,
+        cbudgets=cbudgets,
+    )
+
+    if title:
+        message = f"{title}\n\n" + message
+
+    await bot.edit_message_text(
+        chat_id=chat_id,
+        message_id=message_id,
+        text=message,
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+        reply_markup=REFRESH_KEYBOARD,
+    )
+
+    return cbudgets_reset
 
 
 def detect_platform(url: str):
@@ -1029,6 +1157,46 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             return
 
+    # Пользователь прислал новый список ссылок после команды /update
+    if user_id in pending_update:
+
+        # Если ссылок нет — это не то, что мы ждали, отменяем ожидание.
+        if not urls:
+            del pending_update[user_id]
+
+        else:
+
+            pending = pending_update.pop(user_id)
+
+            entry = await load_message_data(pending["message_id"])
+
+            if not entry:
+                await reply_and_log(
+                    update,
+                    "Не нашел данные по этому сообщению — оно устарело."
+                )
+                return
+
+            cbudgets_reset = await apply_update(
+                context.bot,
+                pending["chat_id"],
+                pending["message_id"],
+                entry,
+                urls,
+            )
+
+            reply = "Готово, обновил список ссылок ✅"
+
+            if cbudgets_reset:
+                reply += (
+                    "\n\n⚠️ Количество ссылок изменилось, /cbudget сбросился — "
+                    "выставь заново, если нужен."
+                )
+
+            await reply_and_log(update, reply)
+
+            return
+
     if not urls:
 
         await reply_and_log(
@@ -1152,6 +1320,7 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("title", cmd_title))
 app.add_handler(CommandHandler("budget", cmd_budget))
 app.add_handler(CommandHandler("cbudget", cmd_cbudget))
+app.add_handler(CommandHandler("update", cmd_update))
 app.add_handler(CommandHandler("stats", cmd_stats))
 app.add_handler(CommandHandler("clean", cmd_clean))
 
