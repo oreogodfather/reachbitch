@@ -633,6 +633,7 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
     total_views_delta = 0
     views_for_copy = []
     new_snapshots = {}
+    instagram_requests = 0
 
     for url in urls:
 
@@ -650,6 +651,11 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
                 stats = await get_youtube_stats(url)
 
             elif platform == "instagram":
+                # Instagram банит гостевые куки за слишком частые подряд идущие запросы,
+                # поэтому в пачке из нескольких инстаграм-ссылок разносим их по времени.
+                if instagram_requests > 0:
+                    await asyncio.sleep(2)
+                instagram_requests += 1
                 stats = await get_instagram_stats(url)
 
             elif platform == "tiktok":
@@ -708,36 +714,36 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
             + "</pre>"
         )
 
-        if budget:
+    if budget:
 
-            cpv = budget / total_views if total_views else 0
+        cpv = budget / total_views if total_views else 0
 
-            previous_total_views = total_views - total_views_delta
+        previous_total_views = total_views - total_views_delta
 
-            cpv_delta = None
+        cpv_delta = None
 
-            if total_views_delta and previous_total_views > 0:
-                previous_cpv = budget / previous_total_views
-                cpv_delta = cpv - previous_cpv
+        if total_views_delta and previous_total_views > 0:
+            previous_cpv = budget / previous_total_views
+            cpv_delta = cpv - previous_cpv
 
-            message += (
-                "\n\n"
-                f"💰 <b>Бюджет:</b> {format_money(budget)} ₽\n"
-                f"📈 <b>CPV:</b> {cpv:.2f} ₽{fmt_float_delta(cpv_delta)}"
-            )
+        message += (
+            "\n\n"
+            f"💰 <b>Бюджет:</b> {format_money(budget)} ₽\n"
+            f"📈 <b>CPV:</b> {cpv:.2f} ₽{fmt_float_delta(cpv_delta)}"
+        )
 
-        else:
-            message += (
-                "\n\n📊 Хочешь посчитать CPV? Ответь на это сообщение "
-                "командой <code>/budget</code>"
-            )
+    elif len(results) > 1:
+        message += (
+            "\n\n📊 Хочешь посчитать CPV? Ответь на это сообщение "
+            "командой <code>/budget</code>"
+        )
 
-        if not has_title:
-            message += (
-                "\n\n📝 Хочешь добавить название проекта? "
-                "Ответь на это сообщение командой <code>/title</code> — "
-                "можно сразу с ссылкой на отчет, и название станет гиперссылкой."
-            )
+    if len(results) > 1 and not has_title:
+        message += (
+            "\n\n📝 Хочешь добавить название проекта? "
+            "Ответь на это сообщение командой <code>/title</code> — "
+            "можно сразу с ссылкой на отчет, и название станет гиперссылкой."
+        )
 
     return message, total_views, new_snapshots
 
