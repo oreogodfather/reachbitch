@@ -53,6 +53,7 @@ pending_title = {}
 
 # user_id -> {"chat_id":, "message_id":}
 pending_budget = {}
+pending_cbudget = {}
 
 redis = Redis(
     url=os.getenv("UPSTASH_REDIS_REST_URL"),
@@ -70,7 +71,7 @@ RAW_FIELDS = {
 }
 
 
-async def save_message_data(message_id, urls, snapshots, title=None, base_text=None, budget=None):
+async def save_message_data(message_id, urls, snapshots, title=None, base_text=None, budget=None, cbudgets=None):
 
     payload = json.dumps({
         "urls": urls,
@@ -78,6 +79,7 @@ async def save_message_data(message_id, urls, snapshots, title=None, base_text=N
         "title": title,
         "base_text": base_text,
         "budget": budget,
+        "cbudgets": cbudgets,
     })
 
     await redis.set(
@@ -267,6 +269,68 @@ async def cmd_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+async def cmd_cbudget(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    await log_message(update.effective_chat.id, update.message.message_id)
+
+    replied = update.message.reply_to_message
+
+    if not replied or replied.from_user.id != context.bot.id:
+        await reply_and_log(
+            update,
+            "Ответь этой командой на сообщение со статистикой, "
+            "для которого хочешь посчитать CPV по каждой ссылке отдельно."
+        )
+        return
+
+    entry = await load_message_data(replied.message_id)
+
+    if not entry:
+        await reply_and_log(
+            update,
+            "Не нашел данные по этому сообщению — оно устарело."
+        )
+        return
+
+    expected = len(entry["urls"])
+
+    # Бюджеты сразу аргументом: /cbudget 50000, 30000, 20000
+    if context.args:
+
+        cbudgets = parse_budget_list(" ".join(context.args), expected)
+
+        if cbudgets is None:
+            await reply_and_log(
+                update,
+                f"Не понял бюджеты. Пришли {expected} чисел через запятую, "
+                "по одному на каждую ссылку, в том же порядке, в котором отправлял ссылки."
+            )
+            return
+
+        await apply_cbudget(
+            context.bot,
+            replied.chat_id,
+            replied.message_id,
+            entry,
+            cbudgets,
+        )
+
+        await reply_and_log(update, "Готово, посчитал CPV по каждой ссылке ✅")
+        return
+
+    pending_cbudget[update.effective_user.id] = {
+        "chat_id": replied.chat_id,
+        "message_id": replied.message_id,
+        "expected": expected,
+    }
+
+    await reply_and_log(
+        update,
+        f"Пришли {expected} бюджетов через запятую следующим сообщением, "
+        "по одному на каждую ссылку в том же порядке 👇"
+    )
+
+
 async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await log_message(update.effective_chat.id, update.message.message_id)
@@ -446,6 +510,7 @@ async def apply_title(bot, chat_id, message_id, entry, raw_title):
         title=title_html,
         base_text=base_text,
         budget=entry.get("budget"),
+        cbudgets=entry.get("cbudgets"),
     )
 
 
@@ -470,6 +535,71 @@ async def apply_budget(bot, chat_id, message_id, entry, budget):
         title=title,
         base_text=message,
         budget=budget,
+    )
+
+    if title:
+        message = f"{title}\n\n" + message
+
+    await bot.edit_message_text(
+        chat_id=chat_id,
+        message_id=message_id,
+        text=message,
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+        reply_markup=REFRESH_KEYBOARD,
+    )
+
+
+def parse_budget_list(text, expected_count):
+    """
+    Разбирает список бюджетов по ссылкам, в том же порядке.
+    Разделитель — запятая, если она есть, иначе пробелы.
+    Возвращает None, если не удалось разобрать или количество не совпало.
+    """
+
+    if "," in text:
+        parts = [p.strip() for p in text.split(",") if p.strip()]
+    else:
+        parts = [p.strip() for p in text.split() if p.strip()]
+
+    if len(parts) != expected_count:
+        return None
+
+    budgets = []
+
+    for part in parts:
+
+        budget = parse_budget(part)
+
+        if budget is None:
+            return None
+
+        budgets.append(budget)
+
+    return budgets
+
+
+async def apply_cbudget(bot, chat_id, message_id, entry, cbudgets):
+
+    title = entry.get("title")
+
+    message, total_views, new_snapshots = await build_message(
+        entry["urls"],
+        entry["snapshots"],
+        has_title=bool(title),
+        cbudgets=cbudgets,
+    )
+
+    if message is None:
+        return
+
+    await save_message_data(
+        message_id,
+        entry["urls"],
+        new_snapshots,
+        title=title,
+        base_text=message,
+        cbudgets=cbudgets,
     )
 
     if title:
@@ -623,7 +753,7 @@ def format_stats(stats: dict):
     return "Неизвестная платформа"
 
 
-async def build_message(urls, previous_snapshots=None, has_title=False, budget=None):
+async def build_message(urls, previous_snapshots=None, has_title=False, budget=None, cbudgets=None):
     """
     Считает статистику по ссылкам, сравнивает с previous_snapshots (если есть)
     и возвращает (текст сообщения, суммарный охват, новые снэпшоты для сохранения).
@@ -636,13 +766,19 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
     total_views_delta = 0
     views_for_copy = []
     new_snapshots = {}
+    cbudget_total = 0
 
-    for url in urls:
+    for idx, url in enumerate(urls):
 
         platform = detect_platform(url)
 
         if platform is None:
             continue
+
+        cbudget = None
+
+        if cbudgets and idx < len(cbudgets):
+            cbudget = cbudgets[idx]
 
         try:
 
@@ -676,9 +812,16 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
                 if stats.get("views_delta") is not None:
                     total_views_delta += stats["views_delta"]
 
-            results.append(
-                format_stats(stats)
-            )
+            item_text = format_stats(stats)
+
+            if cbudget is not None and stats.get("views_raw"):
+
+                item_cpv = cbudget / int(stats["views_raw"])
+                cbudget_total += cbudget
+
+                item_text += f"\n💰 CPV: {item_cpv:.2f} ₽"
+
+            results.append(item_text)
 
         except Exception as e:
 
@@ -695,6 +838,9 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
 
     if not results:
         return None, 0, new_snapshots
+
+    if cbudgets and cbudget_total:
+        budget = cbudget_total
 
     message = "\n\n━━━━━━━━━━━━━━\n\n".join(results)
 
@@ -841,6 +987,48 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             return
 
+    # Пользователь прислал бюджеты по ссылкам после команды /cbudget
+    if user_id in pending_cbudget:
+
+        # Если прислали ссылку — это новый запрос статистики, отменяем ожидание.
+        if extract_urls(text):
+            del pending_cbudget[user_id]
+
+        else:
+
+            pending = pending_cbudget.pop(user_id)
+
+            cbudgets = parse_budget_list(text, pending["expected"])
+
+            if cbudgets is None:
+                await reply_and_log(
+                    update,
+                    f"Не понял бюджеты. Пришли {pending['expected']} чисел через запятую, "
+                    "по одному на каждую ссылку, в том же порядке."
+                )
+                return
+
+            entry = await load_message_data(pending["message_id"])
+
+            if not entry:
+                await reply_and_log(
+                    update,
+                    "Не нашел данные по этому сообщению — оно устарело."
+                )
+                return
+
+            await apply_cbudget(
+                context.bot,
+                pending["chat_id"],
+                pending["message_id"],
+                entry,
+                cbudgets,
+            )
+
+            await reply_and_log(update, "Готово, посчитал CPV по каждой ссылке ✅")
+
+            return
+
     if not urls:
 
         await reply_and_log(
@@ -889,12 +1077,14 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     title = entry.get("title")
     budget = entry.get("budget")
+    cbudgets = entry.get("cbudgets")
 
     message, total_views, new_snapshots = await build_message(
         entry["urls"],
         entry["snapshots"],
         has_title=bool(title),
         budget=budget,
+        cbudgets=cbudgets,
     )
 
     if message is None:
@@ -907,6 +1097,7 @@ async def handle_refresh(update: Update, context: ContextTypes.DEFAULT_TYPE):
         title=title,
         base_text=message,
         budget=budget,
+        cbudgets=cbudgets,
     )
 
     if title:
@@ -960,6 +1151,7 @@ app = (
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("title", cmd_title))
 app.add_handler(CommandHandler("budget", cmd_budget))
+app.add_handler(CommandHandler("cbudget", cmd_cbudget))
 app.add_handler(CommandHandler("stats", cmd_stats))
 app.add_handler(CommandHandler("clean", cmd_clean))
 
