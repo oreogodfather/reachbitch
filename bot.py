@@ -470,6 +470,35 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+async def cmd_reset_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обнуляет всю статистику из /stats — начинаем счет заново."""
+
+    await log_message(update.effective_chat.id, update.message.message_id)
+
+    username = (update.effective_user.username or "").lower()
+
+    if username != ADMIN_USERNAME.lower():
+        return
+
+    keys = [
+        "stats:users",
+        "stats:checks:total",
+        "stats:unique_urls",
+    ]
+
+    for platform in ("telegram", "youtube", "instagram", "tiktok"):
+        keys.append(f"stats:checks:{platform}")
+        keys.append(f"stats:unique_urls:{platform}")
+
+    today = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%Y-%m-%d")
+    keys.append(f"stats:checks:daily:{today}")
+
+    for key in keys:
+        await redis.delete(key)
+
+    await reply_and_log(update, "Статистика обнулена, считаем заново ✅")
+
+
 async def cmd_clean(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Удаляет из последних сообщений чата все, кроме постов со статистикой."""
 
@@ -1404,6 +1433,7 @@ app.add_handler(CommandHandler("budget", cmd_budget))
 app.add_handler(CommandHandler("cbudget", cmd_cbudget))
 app.add_handler(CommandHandler("update", cmd_update))
 app.add_handler(CommandHandler("stats", cmd_stats))
+app.add_handler(CommandHandler("resetstats", cmd_reset_stats))
 app.add_handler(CommandHandler("clean", cmd_clean))
 
 app.add_handler(
