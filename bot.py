@@ -126,6 +126,7 @@ async def track_check(platform, url=None):
 
         if url:
             await redis.sadd("stats:unique_urls", url)
+            await redis.sadd(f"stats:unique_urls:{platform}", url)
 
     except Exception:
         traceback.print_exc()
@@ -420,6 +421,13 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if username != ADMIN_USERNAME.lower():
         return
 
+    platform_labels = {
+        "telegram": ("🔵", "Telegram"),
+        "youtube": ("🔴", "YouTube"),
+        "instagram": ("🟣", "Instagram"),
+        "tiktok": ("⚫", "TikTok"),
+    }
+
     users_count = await redis.scard("stats:users")
     total_checks = await get_counter("stats:checks:total")
     unique_urls = await redis.scard("stats:unique_urls")
@@ -427,20 +435,27 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     today = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%Y-%m-%d")
     checks_today = await get_counter(f"stats:checks:daily:{today}")
 
+    unique_breakdown = []
+
+    for platform, (emoji, _label) in platform_labels.items():
+
+        count = await redis.scard(f"stats:unique_urls:{platform}")
+
+        if count:
+            unique_breakdown.append(f"{emoji}{count}")
+
+    unique_line = f"🔗 Уникальных ссылок: <b>{unique_urls}</b>"
+
+    if unique_breakdown:
+        unique_line += f" ({', '.join(unique_breakdown)})"
+
     lines = [
         f"👤 Уникальных юзеров: <b>{users_count}</b>",
         f"🔍 Всего проверок ссылок: <b>{total_checks}</b>",
         f"📅 Проверено сегодня: <b>{checks_today}</b>",
-        f"🔗 Уникальных ссылок: <b>{unique_urls}</b>",
+        unique_line,
         "",
     ]
-
-    platform_labels = {
-        "telegram": ("🔵", "Telegram"),
-        "youtube": ("🔴", "YouTube"),
-        "instagram": ("🟣", "Instagram"),
-        "tiktok": ("⚫", "TikTok"),
-    }
 
     for platform, (emoji, label) in platform_labels.items():
 
