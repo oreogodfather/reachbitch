@@ -20,6 +20,7 @@ import os
 import re
 import json
 import html
+import hashlib
 import traceback
 import asyncio
 from datetime import datetime
@@ -522,15 +523,33 @@ async def cmd_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-async def send_broadcast(bot, admin_user_id, admin_chat_id, message_id):
+def broadcast_dedup_key(content):
+    """
+    Ключ дедупликации рассылки по содержимому — один и тот же текст/картинка
+    при повторном /broadcast не уйдет дважды тем, кто уже получил.
+    """
+
+    digest = hashlib.sha256(content.encode()).hexdigest()[:24]
+
+    return f"broadcast:sent:{digest}"
+
+
+async def send_broadcast(bot, admin_user_id, admin_chat_id, message_id, dedup_key):
     """Рассылает сообщение всем юзерам из stats:users, копируя его как есть."""
+
+    already_sent = set(await redis.smembers(dedup_key))
 
     user_ids = await redis.smembers("stats:users")
 
     sent = 0
+    skipped = 0
     failed = 0
 
     for raw_user_id in user_ids:
+
+        if raw_user_id in already_sent:
+            skipped += 1
+            continue
 
         try:
             target_id = int(raw_user_id)
@@ -549,6 +568,8 @@ async def send_broadcast(bot, admin_user_id, admin_chat_id, message_id):
             # Помечаем как "стат"-пост в чате получателя, чтобы /clean его не удалил
             await log_message(target_id, copied.message_id, is_stat=True)
 
+            await redis.sadd(dedup_key, raw_user_id)
+
             sent += 1
 
         except Exception:
@@ -556,10 +577,13 @@ async def send_broadcast(bot, admin_user_id, admin_chat_id, message_id):
 
         await asyncio.sleep(0.05)
 
+    await redis.expire(dedup_key, MESSAGE_DATA_TTL)
+
     await bot.send_message(
         chat_id=admin_chat_id,
         text=(
-            f"Готово ✅ Разослано {sent} из {sent + failed}.\n"
+            f"Готово ✅ Разослано {sent} из {sent + skipped + failed}.\n"
+            f"Уже получали ранее (пропущено): {skipped}.\n"
             f"Не доставлено: {failed} (не открывали бота лично или заблокировали его)."
         ),
     )
@@ -1391,6 +1415,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 user_id,
                 update.effective_chat.id,
                 update.message.message_id,
+                broadcast_dedup_key(text),
             )
         )
 
@@ -1523,12 +1548,15 @@ async def handle_broadcast_photo(update: Update, context: ContextTypes.DEFAULT_T
 
     await reply_and_log(update, "Начал рассылку, отпишусь по итогам ✅")
 
+    dedup_content = update.message.photo[-1].file_unique_id + "|" + (update.message.caption or "")
+
     asyncio.create_task(
         send_broadcast(
             context.bot,
             user_id,
             update.effective_chat.id,
             update.message.message_id,
+            broadcast_dedup_key(dedup_content),
         )
     )
 
