@@ -109,12 +109,24 @@ async def track_user(user_id):
         traceback.print_exc()
 
 
-async def track_check(platform):
-    """Считает количество проверенных ссылок, суммарно и по платформам."""
+DAILY_COUNTER_TTL = 60 * 60 * 24 * 2  # держим счетчик дня чуть дольше суток, на всякий
+
+
+async def track_check(platform, url=None):
+    """Считает количество проверенных ссылок, суммарно, по платформам и за сегодня."""
 
     try:
         await redis.incr("stats:checks:total")
         await redis.incr(f"stats:checks:{platform}")
+
+        today = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%Y-%m-%d")
+
+        await redis.incr(f"stats:checks:daily:{today}")
+        await redis.expire(f"stats:checks:daily:{today}", DAILY_COUNTER_TTL)
+
+        if url:
+            await redis.sadd("stats:unique_urls", url)
+
     except Exception:
         traceback.print_exc()
 
@@ -410,10 +422,16 @@ async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     users_count = await redis.scard("stats:users")
     total_checks = await get_counter("stats:checks:total")
+    unique_urls = await redis.scard("stats:unique_urls")
+
+    today = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%Y-%m-%d")
+    checks_today = await get_counter(f"stats:checks:daily:{today}")
 
     lines = [
         f"👤 Уникальных юзеров: <b>{users_count}</b>",
         f"🔍 Всего проверок ссылок: <b>{total_checks}</b>",
+        f"📅 Проверено сегодня: <b>{checks_today}</b>",
+        f"🔗 Уникальных ссылок: <b>{unique_urls}</b>",
         "",
     ]
 
@@ -961,7 +979,7 @@ async def build_message(urls, previous_snapshots=None, has_title=False, budget=N
             else:
                 continue
 
-            await track_check(platform)
+            await track_check(platform, url)
 
             apply_deltas(stats, previous_snapshots.get(url))
             new_snapshots[url] = snapshot_stats(stats)
