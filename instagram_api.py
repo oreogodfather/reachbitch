@@ -1,6 +1,6 @@
 import json
+import os
 import re
-import threading
 
 import requests
 from urllib.parse import quote
@@ -8,71 +8,38 @@ from urllib.parse import quote
 
 GRAPHQL_URL = "https://www.instagram.com/graphql/query"
 
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
-)
+
+INSTAGRAM_COOKIE = os.getenv("INSTAGRAM_COOKIE")
+INSTAGRAM_CSRFTOKEN = os.getenv("INSTAGRAM_CSRFTOKEN")
+
+if not INSTAGRAM_COOKIE or not INSTAGRAM_CSRFTOKEN:
+    raise Exception(
+        "Не заданы INSTAGRAM_COOKIE / INSTAGRAM_CSRFTOKEN в переменных окружения."
+    )
+
+
+HEADERS = {
+    "accept": "*/*",
+    "content-type": "application/x-www-form-urlencoded",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "x-csrftoken": INSTAGRAM_CSRFTOKEN,
+    "x-ig-app-id": "936619743392459",
+    "Cookie": INSTAGRAM_COOKIE,
+}
+
 
 PROFILE_DOC_ID = "27234427476213202"
 SHORTCODE_DOC_ID = "24368985919464652"
 
-_session_lock = threading.Lock()
-_session = None
-
-
-def _create_guest_session():
-    """
-    Анонимный заход на instagram.com без логина — забираем гостевые
-    куки (csrftoken и т.п.), их достаточно для публичных GraphQL-запросов.
-    Не привязано ни к какому личному аккаунту, поэтому банить нечего.
-    """
-
-    session = requests.Session()
-
-    session.headers.update({
-        "user-agent": USER_AGENT,
-        "accept": "*/*",
-    })
-
-    response = session.get("https://www.instagram.com/", timeout=20)
-    response.raise_for_status()
-
-    csrftoken = session.cookies.get("csrftoken")
-
-    if not csrftoken:
-        raise Exception("Не удалось получить гостевой csrftoken от Instagram")
-
-    session.headers.update({
-        "content-type": "application/x-www-form-urlencoded",
-        "x-csrftoken": csrftoken,
-        "x-ig-app-id": "936619743392459",
-    })
-
-    return session
-
-
-def _get_session(force_new=False):
-
-    global _session
-
-    with _session_lock:
-
-        if _session is None or force_new:
-            _session = _create_guest_session()
-
-        return _session
-
 
 def _graphql_post(payload):
 
-    session = _get_session()
-
-    response = session.post(GRAPHQL_URL, data=payload, timeout=20)
-
-    if response.status_code in (401, 403):
-        # гостевая сессия протухла — берем новую и пробуем еще раз
-        session = _get_session(force_new=True)
-        response = session.post(GRAPHQL_URL, data=payload, timeout=20)
+    response = requests.post(
+        GRAPHQL_URL,
+        headers=HEADERS,
+        data=payload,
+        timeout=20
+    )
 
     response.raise_for_status()
 
