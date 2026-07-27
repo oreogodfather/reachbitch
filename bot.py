@@ -56,6 +56,9 @@ pending_budget = {}
 pending_cbudget = {}
 pending_update = {}
 
+# user_id -> True, ждем следующее сообщение как текст рассылки
+pending_broadcast = {}
+
 redis = Redis(
     url=os.getenv("UPSTASH_REDIS_REST_URL"),
     token=os.getenv("UPSTASH_REDIS_REST_TOKEN"),
@@ -497,6 +500,69 @@ async def cmd_reset_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await redis.delete(key)
 
     await reply_and_log(update, "Статистика обнулена, считаем заново ✅")
+
+
+async def cmd_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Запрашивает у админа текст рассылки — следующее его сообщение улетит всем."""
+
+    await log_message(update.effective_chat.id, update.message.message_id)
+
+    username = (update.effective_user.username or "").lower()
+
+    if username != ADMIN_USERNAME.lower():
+        return
+
+    pending_broadcast[update.effective_user.id] = True
+
+    await reply_and_log(
+        update,
+        "Пришли следующим сообщением текст рассылки — как текст с "
+        "форматированием, так и картинку с подписью — разошлю его всем, "
+        "кто когда-либо пользовался ботом."
+    )
+
+
+async def send_broadcast(bot, admin_user_id, admin_chat_id, message_id):
+    """Рассылает сообщение всем юзерам из stats:users, копируя его как есть."""
+
+    user_ids = await redis.smembers("stats:users")
+
+    sent = 0
+    failed = 0
+
+    for raw_user_id in user_ids:
+
+        try:
+            target_id = int(raw_user_id)
+        except (TypeError, ValueError):
+            failed += 1
+            continue
+
+        try:
+
+            copied = await bot.copy_message(
+                chat_id=target_id,
+                from_chat_id=admin_chat_id,
+                message_id=message_id,
+            )
+
+            # Помечаем как "стат"-пост в чате получателя, чтобы /clean его не удалил
+            await log_message(target_id, copied.message_id, is_stat=True)
+
+            sent += 1
+
+        except Exception:
+            failed += 1
+
+        await asyncio.sleep(0.05)
+
+    await bot.send_message(
+        chat_id=admin_chat_id,
+        text=(
+            f"Готово ✅ Разослано {sent} из {sent + failed}.\n"
+            f"Не доставлено: {failed} (не открывали бота лично или заблокировали его)."
+        ),
+    )
 
 
 async def cmd_clean(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1147,7 +1213,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     urls = extract_urls(update.message.text)
 
-    await log_message(update.effective_chat.id, update.message.message_id)
+    if user_id not in pending_broadcast:
+        await log_message(update.effective_chat.id, update.message.message_id)
 
     # Пользователь прислал название после команды /title
     if user_id in pending_title:
@@ -1308,6 +1375,27 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             return
 
+    # Админ прислал текст рассылки после команды /broadcast
+    if user_id in pending_broadcast:
+
+        del pending_broadcast[user_id]
+
+        # Помечаем как "стат"-пост, чтобы /clean его не удалил
+        await log_message(update.effective_chat.id, update.message.message_id, is_stat=True)
+
+        await reply_and_log(update, "Начал рассылку, отпишусь по итогам ✅")
+
+        asyncio.create_task(
+            send_broadcast(
+                context.bot,
+                user_id,
+                update.effective_chat.id,
+                update.message.message_id,
+            )
+        )
+
+        return
+
     if not urls:
 
         await reply_and_log(
@@ -1420,6 +1508,31 @@ async def post_init(app):
         print("=" * 80 + "\n")
 
 
+async def handle_broadcast_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Ловит картинку с подписью, если ей должна стать рассылка после /broadcast."""
+
+    user_id = update.effective_user.id
+
+    if user_id not in pending_broadcast:
+        return
+
+    del pending_broadcast[user_id]
+
+    # Помечаем как "стат"-пост, чтобы /clean его не удалил
+    await log_message(update.effective_chat.id, update.message.message_id, is_stat=True)
+
+    await reply_and_log(update, "Начал рассылку, отпишусь по итогам ✅")
+
+    asyncio.create_task(
+        send_broadcast(
+            context.bot,
+            user_id,
+            update.effective_chat.id,
+            update.message.message_id,
+        )
+    )
+
+
 app = (
     ApplicationBuilder()
     .token(TOKEN)
@@ -1434,12 +1547,20 @@ app.add_handler(CommandHandler("cbudget", cmd_cbudget))
 app.add_handler(CommandHandler("update", cmd_update))
 app.add_handler(CommandHandler("stats", cmd_stats))
 app.add_handler(CommandHandler("resetstats", cmd_reset_stats))
+app.add_handler(CommandHandler("broadcast", cmd_broadcast))
 app.add_handler(CommandHandler("clean", cmd_clean))
 
 app.add_handler(
     MessageHandler(
         filters.TEXT & ~filters.COMMAND,
         handle_message,
+    )
+)
+
+app.add_handler(
+    MessageHandler(
+        filters.PHOTO & ~filters.COMMAND,
+        handle_broadcast_photo,
     )
 )
 
