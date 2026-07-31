@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import re
@@ -105,7 +106,16 @@ def get_shortcode_info(shortcode):
     return _graphql_post(payload)
 
 
-def get_profile_reels(user_id):
+def get_profile_reels(user_id, max_id=None):
+
+    data = {
+        "include_feed_video": True,
+        "page_size": 100,
+        "target_user_id": str(user_id)
+    }
+
+    if max_id:
+        data["max_id"] = max_id
 
     payload = {
         "fb_api_req_friendly_name":
@@ -113,16 +123,11 @@ def get_profile_reels(user_id):
 
         "doc_id": PROFILE_DOC_ID,
 
-        "variables": json.dumps({
-            "data": {
-                "include_feed_video": True,
-                "page_size": 100,
-                "target_user_id": str(user_id)
-            }
-        })
+        "variables": json.dumps({"data": data})
     }
 
     return _graphql_post(payload)
+
 
 def find_media_by_shortcode(edges, shortcode):
 
@@ -132,6 +137,46 @@ def find_media_by_shortcode(edges, shortcode):
 
         if media["code"] == shortcode:
             return media
+
+    return None
+
+
+MAX_PROFILE_PAGES = 10
+
+
+def find_media_in_profile(owner_id, shortcode):
+    """
+    Инстаграм отдает клипы профиля постранично (курсором), реальный размер
+    страницы часто меньше запрошенного page_size — поэтому нужный рил может
+    быть не на первой странице. Идем по страницам, пока не найдем рил или
+    не кончится профиль.
+    """
+
+    cursor = None
+
+    for _ in range(MAX_PROFILE_PAGES):
+
+        profile = get_profile_reels(owner_id, max_id=cursor)
+
+        connection = (
+            profile["data"]
+            ["xdt_api__v1__clips__user__connection_v2"]
+        )
+
+        media = find_media_by_shortcode(connection["edges"], shortcode)
+
+        if media:
+            return media
+
+        page_info = connection.get("page_info") or {}
+
+        if not page_info.get("has_next_page"):
+            break
+
+        cursor = page_info.get("end_cursor")
+
+        if not cursor:
+            break
 
     return None
 
@@ -179,15 +224,15 @@ async def get_instagram_stats(url):
     # Второй GraphQL
     #
 
-    profile = get_profile_reels(owner_id)
+    # Инстаграм иногда отдает пустую/неполную страницу клипов с первого
+    # раза — это не значит, что рила там нет, поэтому пробуем еще раз
+    # перед тем как сдаться.
 
-    edges = (
-        profile["data"]
-        ["xdt_api__v1__clips__user__connection_v2"]
-        ["edges"]
-    )
+    media = find_media_in_profile(owner_id, shortcode)
 
-    media = find_media_by_shortcode(edges, shortcode)
+    if not media:
+        await asyncio.sleep(2)
+        media = find_media_in_profile(owner_id, shortcode)
 
     if not media:
         raise Exception("Reel not found in profile")
