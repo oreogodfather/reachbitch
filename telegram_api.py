@@ -1,5 +1,6 @@
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from telethon.tl.types import PeerChannel
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 import os
@@ -53,11 +54,18 @@ async def get_telegram_stats(url: str):
 
     parts = parsed.path.strip("/").split("/")
 
-    if len(parts) != 2:
-        raise Exception("Неверная ссылка")
+    # Приватные каналы отдаются ссылкой вида t.me/c/<internal_id>/<post_id> —
+    # там нет юзернейма, только внутренний числовой id канала.
+    if len(parts) == 3 and parts[0] == "c":
+        channel = PeerChannel(int(parts[1]))
+        post_id = int(parts[2])
 
-    channel = parts[0]
-    post_id = int(parts[1])
+    elif len(parts) == 2:
+        channel = parts[0]
+        post_id = int(parts[1])
+
+    else:
+        raise Exception("Неверная ссылка")
 
     entity = await client.get_entity(channel)
 

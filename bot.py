@@ -932,7 +932,7 @@ def detect_platform(url: str):
 
     host = urlparse(url).netloc.lower()
 
-    if host == "t.me":
+    if host in ("t.me", "telegram.me", "telegram.dog"):
         return "telegram"
 
     if "youtube.com" in host or "youtu.be" in host:
